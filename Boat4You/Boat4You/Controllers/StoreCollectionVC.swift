@@ -11,7 +11,7 @@ class StoreCollectionVC: UIViewController , UICollectionViewDelegate , UICollect
    
    
     var array:[Store]!
-    
+    var storeSelected:Store!
 //    var array:[Store] = [
 //        Store(name: "Craft", image: UIImage(named: "Craft")!, price: "$50"),
 //        Store(name: "Sailing", image: UIImage(named: "Sailing")!, price: "$40"),
@@ -27,11 +27,16 @@ class StoreCollectionVC: UIViewController , UICollectionViewDelegate , UICollect
        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReusableCell2", for: indexPath) as! StoreCollection
        
-        cell.boatsImageView.image = array[indexPath.row].image
-        cell.nameLabel.text = array[indexPath.row].name
+        cell.boatsImageView.sd_setImage(with: URL(string: array[indexPath.row].logo), placeholderImage: UIImage(named: "Craft"))
+        cell.nameLabel.text = array[indexPath.row].productName
         cell.priceLabel.text = array[indexPath.row].price
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        storeSelected = array[indexPath.row]
+        return true
     }
     
     @IBAction func backTapped(_ sender: Any) {
@@ -47,7 +52,13 @@ class StoreCollectionVC: UIViewController , UICollectionViewDelegate , UICollect
     
     
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let vc = segue.destination as? DetailsVC {
+            
+            vc.store = storeSelected
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

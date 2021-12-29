@@ -9,10 +9,12 @@ import UIKit
 
 
 struct Store {
-    var name: String
-    var image: UIImage
+    var id:String
+    var productName: String
+    var logo: String
     var price: String
-//    var info:String
-//    var images:[UIImage]
-    
+    var images:[String]
+    var productDescription: String
+    var selectCity: String
+    var selectType: String
 }

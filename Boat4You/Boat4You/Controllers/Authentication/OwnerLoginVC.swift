@@ -16,6 +16,7 @@ class OwnerLoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
     }
     @IBAction func loginTapped(_ sender: UIButton) {
         validateFields()

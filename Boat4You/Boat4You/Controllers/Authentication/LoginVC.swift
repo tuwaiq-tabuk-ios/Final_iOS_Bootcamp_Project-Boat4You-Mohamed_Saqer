@@ -60,7 +60,7 @@ class LoginVC: UIViewController {
         if let user = Auth.auth().currentUser {
             
             let db = Firestore.firestore()
-            
+        
             var type:String = ""
             db.collection("users").document(user.uid).getDocument { userResult, error in
                 
@@ -72,34 +72,47 @@ class LoginVC: UIViewController {
                     if type == "User" {
                         print("Sign in User")
                         let storyBoard = UIStoryboard (name: "Main", bundle: nil)
-                    let vc = storyBoard.instantiateViewController(withIdentifier: "MainHome")
-                    vc.modalPresentationStyle = .overFullScreen
+                        let vc = storyBoard.instantiateViewController(withIdentifier: "MainHome")
+                        vc.modalPresentationStyle = .overFullScreen
                         self.present(vc,animated: true)
-                } else {
-                    
-                    let alert = UIAlertController(title: "Ops!", message: "You have an owner account its not the right place ", preferredStyle: .alert)
-                    
-                    let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-                    alert.addAction(action)
-                    
-                    
-                    do {
-                        try Auth.auth().signOut()
-                    } catch {
+                    } else {
+                        
+                        let alert = UIAlertController(title: "Ops!", message: "You have an owner account its not the right place ", preferredStyle: .alert)
+                        
+                        let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                        alert.addAction(action)
+                        
+                        
+                        do {
+                            try Auth.auth().signOut()
+                        } catch {
+                            
+                        }
+                        
+                        self.present(alert, animated: true, completion: nil)
+                        
+                        
                         
                     }
-                    
-                    self.present(alert, animated: true, completion: nil)
-                    
-                    
-                
-            }
                 }
                 
             }
             
-
-}
-
+            
+        }
+        
     }
+    
+    @IBAction func forgotPassTapped(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "forgotPassSegue", sender: nil)
+    }
+    
+    
+
+    
+//    func finishLogging () {
+//        let rootViewController = UIApplication.shared.keyWindow? .rootViewController
+//        guard let mainNavigationController = rootViewController as?
+//                MainViewController else {return}
+//    }
 }
