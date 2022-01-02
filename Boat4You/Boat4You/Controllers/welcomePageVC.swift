@@ -12,7 +12,7 @@ class welcomePageVC: UIViewController {
     @IBOutlet weak var onwerButton: UIButton!
     
     @IBOutlet weak var userButton: UIButton!
-    
+    let radius: CGFloat = 8
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,21 +21,22 @@ class welcomePageVC: UIViewController {
         animatedLabel.animate(newText: animatedLabel.text ?? "", characterDelay: 0.5)
         
         
-        onwerButton.layer.shadowColor = UIColor.black.cgColor
-        onwerButton.layer.shadowOpacity = 1
-        onwerButton.layer.shadowOffset = CGSize(width: 2, height: 2)
-        
-        onwerButton.layer.shadowRadius = 1.0
-        onwerButton.clipsToBounds = false
-        
-        
-        userButton.layer.shadowColor = UIColor.black.cgColor
-        userButton.layer.shadowOpacity = 1
-        userButton.layer.shadowOffset = CGSize(width: 2, height: 2)
-        
-        userButton.layer.shadowRadius = 1.0
-        userButton.clipsToBounds = false
-        
+//        onwerButton.layer.shadowColor = UIColor.black.cgColor
+//        onwerButton.layer.shadowOpacity = 1
+//        onwerButton.layer.shadowOffset = CGSize(width: 2, height: 2)
+//
+//        onwerButton.layer.shadowRadius = 1.0
+//        onwerButton.clipsToBounds = false
+//
+//
+//        userButton.layer.shadowColor = UIColor.black.cgColor
+//        userButton.layer.shadowOpacity = 1
+//        userButton.layer.shadowOffset = CGSize(width: 2, height: 2)
+//
+//        userButton.layer.shadowRadius = 1.0
+//        userButton.clipsToBounds = false
+        onwerButton.dropShadow(radius: radius, opacity: 0.2, color: .black)
+        userButton.dropShadow(radius: radius, opacity: 0.2, color: .black)
     }
 }
 

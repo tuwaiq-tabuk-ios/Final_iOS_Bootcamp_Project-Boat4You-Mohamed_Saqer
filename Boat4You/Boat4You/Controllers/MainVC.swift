@@ -20,7 +20,8 @@ class MainVC: UIViewController , UICollectionViewDelegate , UICollectionViewData
     
     
     
-    @IBOutlet weak var searchBar: UISearchBar!
+ 
+  @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView:UICollectionView!
     
     //    @IBOutlet weak var startingImage: UIImageView!
@@ -30,7 +31,7 @@ class MainVC: UIViewController , UICollectionViewDelegate , UICollectionViewData
     
     var array:[Section] = [Section]()
     
-    
+  let radius: CGFloat = 8
     
     
     
@@ -55,12 +56,13 @@ class MainVC: UIViewController , UICollectionViewDelegate , UICollectionViewData
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        
-        
         searchBar.searchTextField.layer.cornerRadius = 20
         searchBar.searchTextField.layer.masksToBounds = true
         searchBar.backgroundColor = UIColor.white
         searchBar.searchTextField.backgroundColor = UIColor.white
+      
+      
+//      sectionsImage.dropShadow(radius: radius, opacity: 0.2, color: .black)
         
         //        searchBar.barTintColor = UIColor.clear
         //        searchBar.backgroundColor = UIColor.clear
