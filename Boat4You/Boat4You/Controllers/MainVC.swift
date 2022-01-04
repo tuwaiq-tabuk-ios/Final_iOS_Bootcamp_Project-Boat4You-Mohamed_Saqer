@@ -113,7 +113,8 @@ class MainVC: UIViewController , UICollectionViewDelegate , UICollectionViewData
                                                     images: data["images"] as! Array,
                                                     productDescription: data["productDescription"] as! String,
                                                     selectCity: data["selectCity"] as! String,
-                                                    selectType: data["selectType"] as! String))
+                                                    selectType: data["selectType"] as! String,
+                                                    title: data["title"] as! String))
                         }
                         
                         self.array.append(
@@ -133,7 +134,8 @@ class MainVC: UIViewController , UICollectionViewDelegate , UICollectionViewData
                                                     images: data["images"] as! Array,
                                                     productDescription: data["productDescription"] as! String,
                                                     selectCity: data["selectCity"] as! String,
-                                                    selectType: data["selectType"] as! String))
+                                                    selectType: data["selectType"] as! String,
+                                                    title: data["title"] as! String))
                         }
                         
                         self.array.append(

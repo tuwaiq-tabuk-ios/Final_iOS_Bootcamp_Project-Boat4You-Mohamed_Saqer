@@ -22,6 +22,8 @@ class DetailsVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataS
     @IBOutlet weak var type: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var productDescription: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+  
     let radius: CGFloat = 8
     var store:Store!
     
@@ -38,7 +40,7 @@ class DetailsVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataS
         super.viewWillAppear(animated)
         
         
-        
+      titleLabel.text = store.title
         captainName.text = store.productName
         location.text = store.selectCity
         type.text = store.selectType
@@ -58,6 +60,12 @@ class DetailsVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataS
         
     }
     
+  
+  @IBAction func bookingButtonTapped(_ sender: UIButton) {
+  
+  
+  }
+  
 }
 
 

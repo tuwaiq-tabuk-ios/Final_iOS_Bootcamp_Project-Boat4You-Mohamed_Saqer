@@ -23,7 +23,7 @@ class TableVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
 
       tableView.delegate = self
       tableView.dataSource = self
-    tableView.dropShadow(radius: radius, opacity: 0.2, color: .black)
+//    tableView.dropShadow(radius: radius, opacity: 0.2, color: .black)
 //    dgkd.dropShadow(radius: radius, opacity: 0.2, color: .black)
     }
     
@@ -37,7 +37,7 @@ class TableVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
    
     
-    let cell = tableView.dequeueReusableCell(withIdentifier: "ReuseCell", for: indexPath) as! TableCellTableViewCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: "ReuseCell", for: indexPath) as! OrderTableViewCell
 //    cell.OrderLogoImage.image = UIImage(named: "")
 //    cell.orderCaptainName.text = "String"
     

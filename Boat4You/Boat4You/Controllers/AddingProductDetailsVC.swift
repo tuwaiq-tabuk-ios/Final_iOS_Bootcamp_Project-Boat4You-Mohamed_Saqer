@@ -25,6 +25,7 @@ class AddingProductDetailsVC: UIViewController,
   @IBOutlet weak var selectType: UITextField!
   @IBOutlet weak var productDescription: UITextField!
   @IBOutlet weak var uploadedPicsCollection: UICollectionView!
+  @IBOutlet weak var titleTextField: UITextField!
   @IBOutlet weak var logoImage: UIImageView!
   
   let cityPicker = UIPickerView()
@@ -107,6 +108,7 @@ class AddingProductDetailsVC: UIViewController,
     
     database.setData(
       ["\(imageFolderID)" : [
+        "title":self.titleTextField.text!,
         "productName":self.productName.text!,
         "price":self.price.text!,
         "selectCity":self.selectCity.text!,

@@ -39,9 +39,9 @@ class StoreCollectionVC: UIViewController , UICollectionViewDelegate , UICollect
         return true
     }
     
-    @IBAction func backTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
+//    @IBAction func backTapped(_ sender: Any) {
+//        dismiss(animated: true, completion: nil)
+//    }
     
    
   

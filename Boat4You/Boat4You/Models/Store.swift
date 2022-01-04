@@ -17,4 +17,5 @@ struct Store {
     var productDescription: String
     var selectCity: String
     var selectType: String
+  var title: String
 }

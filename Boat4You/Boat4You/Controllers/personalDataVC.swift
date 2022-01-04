@@ -18,7 +18,6 @@ class personalDataVC: UIViewController {
         profileImage.layer.borderColor = UIColor.black.cgColor
         profileImage.layer.cornerRadius = profileImage.frame.height/2
         profileImage.clipsToBounds = true
-       
     }
     
     @IBAction func logOutButtonTapped(_ sender: UIButton) {
@@ -34,4 +33,5 @@ class personalDataVC: UIViewController {
         }
     
     }
+  
 }

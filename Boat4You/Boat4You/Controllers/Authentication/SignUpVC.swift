@@ -54,7 +54,7 @@ class SignUpVC: UIViewController {
         let lastname = self.lastName.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         
         db.collection("users").document((authResult?.user.uid)!).setData([
-            "firstName":fistname,
+          "firstName":fistname,
             "lastName":lastname,
             "type":"User"
         ]) { error in
