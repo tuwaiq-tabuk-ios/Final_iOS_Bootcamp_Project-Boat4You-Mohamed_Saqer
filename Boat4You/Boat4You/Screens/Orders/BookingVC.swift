@@ -10,26 +10,19 @@ import Firebase
 import FirebaseAuth
 
 class BookingVC: UIViewController {
-
+  
   @IBOutlet weak var phoneNumber: UITextField!
   @IBOutlet weak var dateTextField: UITextField!
- 
   
   var dataRequested: Store!
   override func viewDidLoad() {
-        super.viewDidLoad()
-
-        
-    }
-    
-
-  @IBAction func bookingTapped(_ sender: UIButton) {
-    sendBook()
+    super.viewDidLoad()
   }
   
   
-  
-  
+  @IBAction func bookingTapped(_ sender: UIButton) {
+    sendBook()
+  }
   
   
   func sendBook() {
@@ -40,7 +33,6 @@ class BookingVC: UIViewController {
       .document(dataRequested.id)
       .setData([auth.uid:["phoneNumber" : self.phoneNumber.text!,
                           "dateTextField": self.dateTextField.text!
-                        ]],merge: true)
+                         ]],merge: true)
   }
-
 }

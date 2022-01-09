@@ -9,10 +9,12 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class RequestsVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+class RequestsVC: UIViewController,
+                  UICollectionViewDelegate,
+                  UICollectionViewDataSource {
   
   @IBOutlet weak var ordersCollectionView: UICollectionView!
-
+  
   let radius: CGFloat = 8
   var request: RequestCVCell!
   var orders: [Order] = [Order]()
@@ -20,11 +22,7 @@ class RequestsVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
     super.viewDidLoad()
     ordersCollectionView.delegate = self
     ordersCollectionView.dataSource = self
-    //      request.requestView.dropShadow(radius:radius , opacity: 0.2, color: .black)
   }
-  
-  
-  
   
   
   override func viewWillAppear(_ animated: Bool) {
@@ -37,17 +35,14 @@ class RequestsVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
     return orders.count
   }
   
+  
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RequestsCell", for: indexPath) as! RequestCVCell
     
     cell.titleLabel.text = orders[indexPath.row].phoneNumner
     cell.dateLabel.text = orders[indexPath.row].dateUploaded
-      return cell
-    
+    return cell
   }
-  
-  
-  
   
   
   func reciveData() {
@@ -76,7 +71,7 @@ class RequestsVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
                     let data = value as! Dictionary<String,Any>
                     
                     let gettingInfo = Order(phoneNumner: data ["phoneNumber"] as!String,
-                                             dateUploaded: data ["dateTextField"] as!String)
+                                            dateUploaded: data ["dateTextField"] as!String)
                     
                     
                     orders.append(gettingInfo)
