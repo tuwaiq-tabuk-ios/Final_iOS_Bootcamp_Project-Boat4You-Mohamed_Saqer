@@ -23,6 +23,7 @@ class OffersCollectionVC: UIViewController , UICollectionViewDelegate , UICollec
         return array.count
     }
     
+  
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReusableCell2", for: indexPath) as! StoreCVCell
@@ -34,6 +35,7 @@ class OffersCollectionVC: UIViewController , UICollectionViewDelegate , UICollec
         return cell
     }
     
+  
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         storeSelected = array[indexPath.row]
         return true

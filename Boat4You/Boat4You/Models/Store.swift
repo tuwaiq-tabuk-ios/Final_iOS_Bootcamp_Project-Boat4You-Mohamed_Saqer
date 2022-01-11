@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 struct Store {
   var id:String
   var productName: String
