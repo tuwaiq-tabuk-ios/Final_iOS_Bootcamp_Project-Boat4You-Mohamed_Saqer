@@ -54,17 +54,17 @@ class OwnerSignUpVC: UIViewController {
         
         
         db.collection("users").document((authResult?.user.uid)!).setData([
-            "firstName":fistname,
-            "lastName":lastname,
+          "firstName":fistname!,
+            "lastName":lastname!,
             "type":"Owner"
         ]) { error in
             if error != nil {
-                print("error: \(error?.localizedDescription)")
+              print("error: \(String(describing: error?.localizedDescription))")
             }
         }
         
         guard let user = authResult?.user , error == nil else {
-            print("Error \(error?.localizedDescription)")
+          print("Error \(String(describing: error?.localizedDescription))")
             return
         }
         

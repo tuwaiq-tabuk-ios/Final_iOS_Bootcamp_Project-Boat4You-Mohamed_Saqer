@@ -41,50 +41,54 @@ class RequestsVC: UIViewController,
     
     cell.titleLabel.text = orders[indexPath.row].phoneNumner
     cell.dateLabel.text = orders[indexPath.row].dateUploaded
+    cell.deleteRequest.tag = indexPath.row
     return cell
+  }
+  
+
+  @IBAction func deletRequestPressed(_ sender: UIButton) {
+   
+    let index = sender.tag
+      
+     let ind2 = orders.firstIndex(of: orders[index])
+      let db = Firestore.firestore()
+    db.collection("orders").document(orders[index].docID).delete()
+   
+    orders.remove(at: ind2!)
+    ordersCollectionView.reloadData()
   }
   
   
   func reciveData() {
     let db = Firestore.firestore()
-    let auth = Auth.auth().currentUser
-    var ID = ""
-    db.collection("stores").document(auth!.uid).collection("store").getDocuments { snapshot, error
-      in if error != nil {
-        
-      } else {
-        
-        for document in snapshot! .documents {
-          let data = document.data()
-          
-          ID = data["id"] as! String
-          let collectionRF:CollectionReference = db.collection("orders")
-          collectionRF.getDocuments { [self] snapshot, error in
-            if error != nil {
+    db.collection("orders").addSnapshotListener { (querySnapshot, error) in
+            
+            if let error = error {
+                print("There was problem of getting data. \(error)")
             } else {
-              orders.removeAll()
-              for document in snapshot!.documents {
-                let allData = document.data()
-                if document.documentID == ID {
-                  for ( _ ,value) in allData {
+
+                self.orders = []
+                
+                for document in querySnapshot!.documents{
+                    let data = document.data()
+
+                    self.orders.append(
+                        Order(
                     
-                    let data = value as! Dictionary<String,Any>
+                      phoneNumner: data["phoneNumber"] as? String ?? "SS",
+                      dateUploaded: data ["date"] as? String ?? "SS",
+                      docID: data ["docID"] as? String ?? "SS",
+                      orderID: data ["id"] as? String ?? "SS"
                     
-                    let gettingInfo = Order(phoneNumner: data ["phoneNumber"] as!String,
-                                            dateUploaded: data ["dateTextField"] as!String)
+                    )
+                )}
+                DispatchQueue.main.async {
+
+                    self.ordersCollectionView.reloadData()
                     
-                    
-                    orders.append(gettingInfo)
-                    ordersCollectionView.reloadData()
-                    print("~~\(gettingInfo)")
-                  }
                 }
-              }
+                
             }
-          }
-          
         }
-      }
     }
-  }
 }

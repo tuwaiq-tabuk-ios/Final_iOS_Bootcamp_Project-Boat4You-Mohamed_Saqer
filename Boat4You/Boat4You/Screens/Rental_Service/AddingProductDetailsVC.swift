@@ -9,7 +9,7 @@ import UIKit
 import PhotosUI
 import Firebase
 import FirebaseAuth
-
+import FirebaseFirestore
 class AddingProductDetailsVC: UIViewController,
                               UIImagePickerControllerDelegate,
                               UINavigationControllerDelegate,
@@ -60,9 +60,9 @@ class AddingProductDetailsVC: UIViewController,
     toolBarCity.sizeToFit()
     
     let cityDoneButon = UIBarButtonItem(title: "Done",
-                                     style: .plain,
-                                     target: self,
-                                     action: #selector(closeCityPicker))
+                                        style: .plain,
+                                        target: self,
+                                        action: #selector(closeCityPicker))
     toolBarCity.setItems([cityDoneButon], animated: true)
     toolBarCity.isUserInteractionEnabled = true
     selectCity.inputView = cityPicker
@@ -75,18 +75,14 @@ class AddingProductDetailsVC: UIViewController,
     toolBarType.sizeToFit()
     
     let typeDoneButon = UIBarButtonItem(title: "Done",
-                                     style: .plain,
-                                     target: self,
-                                     action: #selector(closeTypePicker))
+                                        style: .plain,
+                                        target: self,
+                                        action: #selector(closeTypePicker))
     toolBarType.setItems([typeDoneButon], animated: true)
     toolBarType.isUserInteractionEnabled = true
     selectType.inputView = typePicker
     selectType.inputAccessoryView = toolBarType
-    
-    
-    
   }
-  
   
   
   @IBAction func uploadImages(_ sender: UIButton) {
@@ -177,7 +173,7 @@ class AddingProductDetailsVC: UIViewController,
           db.collection("sections").document(type!).setData(["\(imageFolderID)" : [
             "logo":url?.absoluteString]],merge: true, completion: { error in
               guard error == nil else {
-                print("~~ error: \(error?.localizedDescription)")
+                print("~~ error: \(String(describing: error?.localizedDescription))")
                 return
               }
               print("~~ Done")
@@ -217,7 +213,7 @@ class AddingProductDetailsVC: UIViewController,
                   ]],merge: true, completion: {
                     error in
                     guard error == nil else {
-                      print("~~ error: \(error?.localizedDescription)")
+                      print("~~ error: \(String(describing: error?.localizedDescription))")
                       return
                     }
                     print("~~ Done")

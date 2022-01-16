@@ -7,7 +7,9 @@
 
 import UIKit
 
-class DetailsVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+class DetailsVC: UIViewController,
+                 UICollectionViewDelegate,
+                 UICollectionViewDataSource {
   
 
   @IBOutlet weak var bookingButtonOutlet: UIButton!
@@ -27,8 +29,8 @@ class DetailsVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        detailsView.dropShadow(radius: radius, opacity: 0.2, color: .black)
-      bookingButtonOutlet.dropShadow(radius: radius, opacity: 0.2, color: .black)
+//        detailsView.dropShadow(radius: radius, opacity: 0.2, color: .black)
+//      bookingButtonOutlet.dropShadow(radius: radius, opacity: 0.2, color: .black)
         
     }
     
