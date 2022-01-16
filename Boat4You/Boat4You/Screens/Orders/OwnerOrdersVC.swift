@@ -9,6 +9,8 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import SDWebImage
+import FirebaseFirestore
+
 class OwnerOrdersVC: UIViewController,
                      UICollectionViewDelegate,
                      UICollectionViewDataSource {
@@ -33,7 +35,7 @@ class OwnerOrdersVC: UIViewController,
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    view.isUserInteractionEnabled = false
+//    view.isUserInteractionEnabled = false
     getData()
     
   }
@@ -73,19 +75,6 @@ class OwnerOrdersVC: UIViewController,
   }
   
   
-  
-  //  @IBAction func removeCollection(_ sender: UIButton) {
-  ////    let index = sender.tag
-  ////      let ind = dataFilter.firstIndex(of: dataFilter[index])
-  ////     let ind2 = arrCafe.firstIndex(of: dataFilter[index])
-  ////      let db = Firestore.firestore()
-  ////      db.collection("sections").document(filterdata[index].id).delete()
-  ////    dataFilter.remove(at: ind!)
-  ////      arrCafe.remove(at: ind2!)
-  ////      collectionCafe.reloadData()
-  //  }
-  
-  
   func getData() {
     
     let db = Firestore.firestore()
@@ -117,7 +106,7 @@ class OwnerOrdersVC: UIViewController,
                   
                   self.store.append(store1)
                   self.collectionViewE.reloadData()
-                  self.view.isUserInteractionEnabled = true
+//                  self.view.isUserInteractionEnabled = true
                 }
               }
             }

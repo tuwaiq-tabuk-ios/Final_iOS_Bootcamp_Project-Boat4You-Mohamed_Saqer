@@ -9,9 +9,17 @@ import UIKit
 import PhotosUI
 import Firebase
 import FirebaseStorage
+import FirebaseFirestore
 
-
-class EditOwnerInfoVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,PHPickerViewControllerDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UIImagePickerControllerDelegate,UINavigationBarDelegate, UINavigationControllerDelegate {
+class EditOwnerInfoVC: UIViewController,
+                       UICollectionViewDelegate,
+                       UICollectionViewDataSource,
+                       PHPickerViewControllerDelegate,
+                       UIPickerViewDelegate,
+                       UIPickerViewDataSource,
+                       UIImagePickerControllerDelegate,
+                       UINavigationBarDelegate,
+                       UINavigationControllerDelegate {
  
 
   @IBOutlet weak var uploadedPicsCollection: UICollectionView!
@@ -240,7 +248,7 @@ class EditOwnerInfoVC: UIViewController,UICollectionViewDelegate,UICollectionVie
                   db.collection("sections").document(type!).setData(["\(imageFolderID)" : [
                     "logo":url?.absoluteString]],merge: true, completion: { error in
                       guard error == nil else {
-                        print("~~ error: \(error?.localizedDescription)")
+                        print("~~ error: \(String(describing: error?.localizedDescription))")
                         return
                       }
                       print("~~ Done")
@@ -281,7 +289,7 @@ class EditOwnerInfoVC: UIViewController,UICollectionViewDelegate,UICollectionVie
                           ]],merge: true, completion: {
                             error in
                             guard error == nil else {
-                              print("~~ error: \(error?.localizedDescription)")
+                              print("~~ error: \(String(describing: error?.localizedDescription))")
                               return
                             }
                             print("~~ Done")

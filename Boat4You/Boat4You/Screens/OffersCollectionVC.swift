@@ -9,16 +9,20 @@ import UIKit
 
 class OffersCollectionVC: UIViewController , UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout {
    
-   
-    var array:[Store]!
-    var storeSelected:Store!
-//    var array:[Store] = [
-//        Store(name: "Craft", image: UIImage(named: "Craft")!, price: "$50"),
-//        Store(name: "Sailing", image: UIImage(named: "Sailing")!, price: "$40"),
-//        Store(name: "Diving", image: UIImage(named: "Diving")!, price: "$30"),
-//        Store(name: "Diving", image: UIImage(named: "Diving")!, price: "$15"),
-//    ]
+ 
+  @IBOutlet weak var storeCollection: UICollectionView!
+  @IBOutlet weak var search: UISearchBar!
+  var array:[Store]!
+  var storeSelected:Store!
+
     
+  override func viewDidLoad() {
+      super.viewDidLoad()
+      storeCollection.delegate = self
+      storeCollection.dataSource = self
+  }
+  
+  
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return array.count
     }
@@ -41,19 +45,7 @@ class OffersCollectionVC: UIViewController , UICollectionViewDelegate , UICollec
         return true
     }
     
-//    @IBAction func backTapped(_ sender: Any) {
-//        dismiss(animated: true, completion: nil)
-//    }
-    
-   
   
-    
-    @IBOutlet weak var storeCollection: UICollectionView!
-    
-    
-    
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let vc = segue.destination as? DetailsVC {
@@ -61,23 +53,4 @@ class OffersCollectionVC: UIViewController , UICollectionViewDelegate , UICollec
             vc.store = storeSelected
         }
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        storeCollection.delegate = self
-        storeCollection.dataSource = self
-        // Do any additional setup after loading the view.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

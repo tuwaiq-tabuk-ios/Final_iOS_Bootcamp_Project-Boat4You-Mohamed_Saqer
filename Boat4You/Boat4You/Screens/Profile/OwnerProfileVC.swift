@@ -29,7 +29,5 @@ class OwnerProfileVC: UIViewController {
         let alert = UIAlertController(title: "Error", message: signOutError.localizedDescription, preferredStyle: UIAlertController.Style.alert)
         self.present(alert, animated: true, completion: nil)
     }
-
   }
-  
 }

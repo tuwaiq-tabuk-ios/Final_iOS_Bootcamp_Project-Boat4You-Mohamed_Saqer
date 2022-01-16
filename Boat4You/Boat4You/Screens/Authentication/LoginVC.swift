@@ -106,13 +106,5 @@ class LoginVC: UIViewController {
     @IBAction func forgotPassTapped(_ sender: UIButton) {
         self.performSegue(withIdentifier: "forgotPassSegue", sender: nil)
     }
-    
-    
-
-    
-//    func finishLogging () {
-//        let rootViewController = UIApplication.shared.keyWindow? .rootViewController
-//        guard let mainNavigationController = rootViewController as?
-//                MainViewController else {return}
-//    }
+   
 }
