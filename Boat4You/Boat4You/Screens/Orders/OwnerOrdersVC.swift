@@ -41,6 +41,26 @@ class OwnerOrdersVC: UIViewController,
   }
   
   
+  @IBAction func removeCVPressed(_ sender: UIButton) {
+    let index = sender.tag
+    let db = Firestore.firestore()
+    let userID = Auth.auth().currentUser?.uid
+    let storeID = store[index].id
+    let storeType = store[index].selectType.lowercased()
+     db.collection("stores").document(userID!).collection("store").document(storeID).delete()
+    let documentRef = db.collection("sections").document(storeType)
+    documentRef.updateData([storeID:FieldValue.delete()]) { error in
+      guard error == nil else {return}
+      
+      self.store.remove(at: index)
+      self.collectionViewE.reloadData()
+
+    }
+    
+    
+  }
+  
+  
   @IBAction func editButtonPreased(_ sender: UIButton) {
     
     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
@@ -70,6 +90,7 @@ class OwnerOrdersVC: UIViewController,
     cell.orderTitle.text = store[indexPath.row].productName
     cell.orderPrice.text = store[indexPath.row].price
     cell.editButoon.tag = indexPath.row
+    cell.removeCV.tag = indexPath.row
     print("~~ gg")
     return cell
   }
