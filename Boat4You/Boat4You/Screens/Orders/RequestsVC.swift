@@ -61,34 +61,39 @@ class RequestsVC: UIViewController,
   
   func reciveData() {
     let db = Firestore.firestore()
-    db.collection("orders").addSnapshotListener { (querySnapshot, error) in
-            
-            if let error = error {
-                print("There was problem of getting data. \(error)")
-            } else {
-
-                self.orders = []
-                
-                for document in querySnapshot!.documents{
-                    let data = document.data()
-
-                    self.orders.append(
+    let userID = Auth.auth().currentUser?.uid
+    db.collection("stores").document(userID!).collection("store").getDocuments { snapshot, error in
+      guard error == nil else {return}
+      
+      guard let document = snapshot?.documents else {return}
+      
+      for documentSnapshot in document {
+        let id = documentSnapshot.documentID
+        db.collection("orders").whereField("id", isEqualTo: id).addSnapshotListener { (querySnapshot, error) in
+                  if let error = error {
+                    print("There was problem of getting data. \(error)")
+                  } else {
+                    self.orders = []
+                    for document in querySnapshot!.documents{
+                      let data = document.data()
+                      self.orders.append(
                         Order(
-                    
-                      phoneNumner: data["phoneNumber"] as? String ?? "SS",
-                      dateUploaded: data ["date"] as? String ?? "SS",
-                      docID: data ["docID"] as? String ?? "SS",
-                      orderID: data ["id"] as? String ?? "SS"
-                    
-                    )
-                )}
-                DispatchQueue.main.async {
-
-                    self.ordersCollectionView.reloadData()
-                    
+                       phoneNumner: data["phoneNumber"] as? String ?? "SS",
+                       dateUploaded: data ["date"] as? String ?? "SS",
+                       docID: data ["docID"] as? String ?? "SS",
+                       orderID: data ["id"] as? String ?? "SS"
+                      )
+                    )}
+                    DispatchQueue.main.async {
+                      self.ordersCollectionView.reloadData()
+                    }
+                  }
                 }
-                
-            }
-        }
+        
+      }
+      
+      
     }
+    
+      }
 }
