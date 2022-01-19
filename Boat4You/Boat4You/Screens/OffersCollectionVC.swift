@@ -7,15 +7,19 @@
 
 import UIKit
 
-class OffersCollectionVC: UIViewController , UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout {
+class OffersCollectionVC: UIViewController,
+                          UICollectionViewDelegate,
+                          UICollectionViewDataSource,
+                          UICollectionViewDelegateFlowLayout {
    
- 
+  //MARK: - IBAction
   @IBOutlet weak var storeCollection: UICollectionView!
   @IBOutlet weak var search: UISearchBar!
   var array:[Store]!
   var storeSelected:Store!
 
     
+  //MARK: - View Controller lifecycle
   override func viewDidLoad() {
       super.viewDidLoad()
       storeCollection.delegate = self
@@ -23,6 +27,7 @@ class OffersCollectionVC: UIViewController , UICollectionViewDelegate , UICollec
   }
   
   
+  //MARK: - Extensions
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return array.count
     }
@@ -33,7 +38,7 @@ class OffersCollectionVC: UIViewController , UICollectionViewDelegate , UICollec
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReusableCell2", for: indexPath) as! StoreCVCell
        
         cell.boatsImageView.sd_setImage(with: URL(string: array[indexPath.row].logo), placeholderImage: UIImage(named: "Craft"))
-        cell.nameLabel.text = array[indexPath.row].productName
+        cell.nameLabel.text = array[indexPath.row].captainName
         cell.priceLabel.text = array[indexPath.row].price
         
         return cell

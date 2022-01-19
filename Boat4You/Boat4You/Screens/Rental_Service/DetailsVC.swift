@@ -11,21 +11,24 @@ class DetailsVC: UIViewController,
                  UICollectionViewDelegate,
                  UICollectionViewDataSource {
   
-
-  @IBOutlet weak var bookingButtonOutlet: UIButton!
-  @IBOutlet weak var detailsView: UIView!
-    @IBOutlet weak var descriptionView: UILabel!
-    @IBOutlet weak var storeCollection: UICollectionView!
-    @IBOutlet weak var captainName: UILabel!
-    @IBOutlet weak var location: UILabel!
-    @IBOutlet weak var type: UILabel!
-    @IBOutlet weak var price: UILabel!
-    @IBOutlet weak var productDescription: UILabel!
-    @IBOutlet weak var titleLabel: UILabel!
+  // MARK: - IBoutlet
+  @IBOutlet weak var bookingButtonOutlet  : UIButton!
+  @IBOutlet weak var detailsView          : UIView!
+  @IBOutlet weak var descriptionLabel     : UILabel!
+  @IBOutlet weak var storeCV              : UICollectionView!
+  @IBOutlet weak var captainNameLabel     : UILabel!
+  @IBOutlet weak var locationLabel        : UILabel!
+  @IBOutlet weak var typeLabel            : UILabel!
+  @IBOutlet weak var priceLabel           : UILabel!
+  @IBOutlet weak var offerDescriptionLabel: UILabel!
+  @IBOutlet weak var titleLabel           : UILabel!
   
-    let radius: CGFloat = 8
-    var store:Store!
-    
+  // MARK: - Properties
+  let radius: CGFloat = 8
+  var store:Store!
+
+  
+  // MARK: - View Controller Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,38 +41,31 @@ class DetailsVC: UIViewController,
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        
-      titleLabel.text = store.title
-        captainName.text = store.productName
-        location.text = store.selectCity
-        type.text = store.selectType
-        price.text = store.price
-        productDescription.text = store.productDescription
+        titleLabel.text            =      store.title
+        captainNameLabel.text      =      store.captainName
+        locationLabel.text         =      store.selectCity
+        typeLabel.text             =      store.selectType
+        priceLabel.text            =      store.price
+        offerDescriptionLabel.text =      store.offerDescription
     }
     
+  
+  // MARK: - Collection methods
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return store.images.count
     }
     
+  
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imagesCell", for: indexPath) as! StoreImageCVCell
         
         cell.storeImages.sd_setImage(with: URL(string: store.images[indexPath.row]), placeholderImage: UIImage(named: "Craft"))
         return cell
-        
     }
     
-  
-  @IBAction func bookingButtonTapped(_ sender: UIButton) {
-  
-  
-  }
-  
-  
-  
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if let vc = segue.destination as? BookingVC {
+  // MARK: - Prepare
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let vc = segue.destination as? ClientBookVC {
       vc.dataRequested = store
     }
   }

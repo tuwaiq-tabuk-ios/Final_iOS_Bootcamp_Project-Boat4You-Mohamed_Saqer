@@ -90,11 +90,11 @@ class MainVC: UIViewController,
             for (key,value) in datas {
               let data = value as! Dictionary<String,Any>
               
-              arrayStore.append(Store(id: key, productName: data["productName"] as! String,
+              arrayStore.append(Store(id: key, captainName: data["productName"] as! String,
                                       logo: data["logo"] as! String,
                                       price: data["price"] as! String,
                                       images: data["images"] as! Array,
-                                      productDescription: data["productDescription"] as! String,
+                                      offerDescription: data["productDescription"] as! String,
                                       selectCity: data["selectCity"] as! String,
                                       selectType: data["selectType"] as! String,
                                       title: data["title"] as! String))
@@ -111,11 +111,11 @@ class MainVC: UIViewController,
             for (key,value) in datas {
               let data = value as! Dictionary<String,Any>
               
-              arrayStore.append(Store(id: key, productName: data["productName"] as! String,
+              arrayStore.append(Store(id: key, captainName: data["productName"] as! String,
                                       logo: data["logo"] as! String,
                                       price: data["price"] as! String,
                                       images: data["images"] as! Array,
-                                      productDescription: data["productDescription"] as! String,
+                                      offerDescription: data["productDescription"] as! String,
                                       selectCity: data["selectCity"] as! String,
                                       selectType: data["selectType"] as! String,
                                       title: data["title"] as! String))

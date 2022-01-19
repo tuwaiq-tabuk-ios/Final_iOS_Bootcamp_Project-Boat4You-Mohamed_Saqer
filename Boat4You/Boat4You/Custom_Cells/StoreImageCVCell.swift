@@ -9,9 +9,7 @@ import UIKit
 
 
 class StoreImageCVCell: UICollectionViewCell {
-    
-    
-    @IBOutlet weak var storeImages: UIImageView!
-    
+   
+  @IBOutlet weak var storeImages: UIImageView!
 }
 

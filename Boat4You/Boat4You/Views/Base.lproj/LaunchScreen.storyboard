@@ -17,28 +17,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppIconInside" translatesAutoresizingMaskIntoConstraints="NO" id="6RM-ed-5Dv">
-                                <rect key="frame" x="87" y="431.5" width="240" height="140"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Launch" translatesAutoresizingMaskIntoConstraints="NO" id="1nC-7c-dzC">
+                                <rect key="frame" x="20" y="318" width="374" height="201"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="140" id="OuJ-uM-ps6"/>
+                                    <constraint firstAttribute="height" constant="201" id="jwf-o1-VdG"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Boat4You" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMT-59-zU8">
-                                <rect key="frame" x="50" y="354" width="314" height="74.5"/>
-                                <fontDescription key="fontDescription" name="SnellRoundhand-Bold" family="Snell Roundhand" pointSize="59"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="Color"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NMT-59-zU8" secondAttribute="trailing" constant="50" id="9ox-6T-f2A"/>
-                            <constraint firstItem="NMT-59-zU8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="KK0-ba-ROe"/>
-                            <constraint firstItem="NMT-59-zU8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="310" id="Sza-Nw-g1m"/>
-                            <constraint firstItem="6RM-ed-5Dv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="bYx-dN-4AZ"/>
-                            <constraint firstItem="6RM-ed-5Dv" firstAttribute="top" secondItem="NMT-59-zU8" secondAttribute="bottom" constant="3" id="mqE-QB-iCX"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6RM-ed-5Dv" secondAttribute="trailing" constant="87" id="wFw-Lb-29h"/>
+                            <constraint firstItem="1nC-7c-dzC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Rjz-9H-IG8"/>
+                            <constraint firstItem="1nC-7c-dzC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="274" id="XcG-AM-cnI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1nC-7c-dzC" secondAttribute="bottom" constant="343" id="g0w-pv-hgD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1nC-7c-dzC" secondAttribute="trailing" constant="20" id="tgT-mu-JDW"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -48,7 +40,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AppIconInside" width="497" height="502"/>
+        <image name="Launch" width="500" height="500"/>
         <namedColor name="Color">
             <color red="0.63529411764705879" green="0.85882352941176465" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
