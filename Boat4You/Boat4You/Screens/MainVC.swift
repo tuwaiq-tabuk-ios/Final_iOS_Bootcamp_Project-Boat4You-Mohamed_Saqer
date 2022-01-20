@@ -46,7 +46,6 @@ class MainVC: UIViewController {
   func getDataFromFireStore() {
     
     let db = Firestore.firestore()
-    let auth = Auth.auth().currentUser
     
     let collectionRF:CollectionReference = db.collection("sections")
     collectionRF.getDocuments { snapshot, error in

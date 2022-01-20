@@ -268,7 +268,7 @@ class EditOwnerInfoVC: UIViewController,
   }
   
   
-  func getPhoto(type: UIImagePickerController.SourceType){
+  func getLogo(type: UIImagePickerController.SourceType){
     let pickerCont = UIImagePickerController()
     pickerCont.sourceType = type
     pickerCont.allowsEditing = false
@@ -349,12 +349,12 @@ class EditOwnerInfoVC: UIViewController,
     alert.addAction(UIAlertAction(title: "Camera",
                                   style: .default,
                                   handler: { action in
-      self.getPhoto(type: .camera)
+      self.getLogo(type: .camera)
     }))
     alert.addAction(UIAlertAction(title: "Photo Library",
                                   style: .default,
                                   handler: { action in
-      self.getPhoto(type: .photoLibrary)
+      self.getLogo(type: .photoLibrary)
     }))
     alert.addAction(UIAlertAction(title:
                                     "Cancel",

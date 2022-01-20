@@ -62,7 +62,7 @@ class LoginVC: UIViewController {
     Auth.auth().signIn(withEmail: emailField.text!,
                        password: passwordField.text!) { [weak self] authoResult,error in
       
-      guard let strongSelf = self else {return}
+      guard self != nil else {return}
       if let error = error {
         print(error.localizedDescription)
       }
@@ -99,18 +99,11 @@ class LoginVC: UIViewController {
             do {
               try Auth.auth().signOut()
             } catch {
-              
             }
-            
-            
           }
         }
-        
       }
-      
-      
     }
-    
   }
   
   

@@ -64,7 +64,7 @@ class OwnerLoginVC: UIViewController {
   func ownerLogin() {
     
     Auth.auth().signIn(withEmail: emailField.text!, password: passwordField.text!) { [weak self] authoResult,error in
-      guard let strongSelf = self else {return}
+      guard self != nil else {return}
       if let error = error {
       print(error.localizedDescription)
       }
@@ -87,7 +87,7 @@ class OwnerLoginVC: UIViewController {
         
         if error != nil {
           print("Error \(String(describing: error?.localizedDescription))")
-        
+
         } else {
           let data = userResult?.data()
           type = data!["type"] as! String

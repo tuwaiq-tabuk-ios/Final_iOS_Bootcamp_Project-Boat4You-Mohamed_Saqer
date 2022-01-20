@@ -15,18 +15,24 @@ class OwnerOffersVC: UIViewController,
                      UICollectionViewDelegate,
                      UICollectionViewDataSource {
   
+  
   // MARK: - IBOutlet
+ 
   @IBOutlet weak var collectionViewE: UICollectionView!
   @IBOutlet weak var stopTouchView: UIView!
   
+  
   // MARK: -Properties
+ 
   var store = [Store]()
   var storeSelected:Store!
   var dataFilter: [Section]!
   var collectionRF: CollectionReference!
   let radius: CGFloat = 8
   
+  
   // MARK: - View Controller lifecycle
+ 
   override func viewDidLoad() {
     super.viewDidLoad()
     collectionViewE.delegate = self
@@ -43,7 +49,9 @@ class OwnerOffersVC: UIViewController,
     getDataFromFireStore()
   }
   
+  
   // MARK: - IBAction
+ 
   @IBAction func removeCVPressed(_ sender: UIButton) {
     let index = sender.tag
     let db = Firestore.firestore()
@@ -92,12 +100,12 @@ class OwnerOffersVC: UIViewController,
     cell.orderPrice.text = store[indexPath.row].price
     cell.editButoon.tag = indexPath.row
     cell.removeCV.tag = indexPath.row
-    print("~~ gg")
     return cell
   }
   
   
   // MARK: - Method
+ 
   func getDataFromFireStore() {
     
     stopTouchView.isUserInteractionEnabled = true;

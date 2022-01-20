@@ -51,6 +51,7 @@ class UpdateUserInfoVC: UIViewController {
   //MARK: - Methods
   
   func updateUserProfile () {
+  
     let db = Firestore.firestore()
     if let user = Auth.auth().currentUser{
       let id = user.uid

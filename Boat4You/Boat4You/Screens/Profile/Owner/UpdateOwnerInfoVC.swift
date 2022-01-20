@@ -24,6 +24,7 @@ class UpdateOwnerInfoVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     hideKeyboardWhenTappedAround()
+    updateOwnerProfile ()
   }
  
   
@@ -51,7 +52,7 @@ class UpdateOwnerInfoVC: UIViewController {
   
   //MARK: - Methods
  
-  func updateOwnerProfile () {
+  func updateOwnerProfile() {
     
     let db = Firestore.firestore()
     if let user = Auth.auth().currentUser{

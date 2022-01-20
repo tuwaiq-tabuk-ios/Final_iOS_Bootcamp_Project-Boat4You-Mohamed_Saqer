@@ -80,6 +80,7 @@ class UploadOffersVC: UIViewController,
   
   @IBAction func sendDataPressed(_ sender: UIButton) {
     uploadDataToFireStore()
+    showAlertMessage(title: "Successfully", message: "Data uploaded successfully")
   }
   
   
@@ -139,7 +140,7 @@ class UploadOffersVC: UIViewController,
     let type = self.selectTypeField.text?.lowercased()
     
     let database = db.collection("sections").document(type!)
-    let id = database.documentID
+//    let id = database.documentID
     
     
     imageID = UUID().uuidString
@@ -240,7 +241,6 @@ class UploadOffersVC: UIViewController,
                       print("~~ error: \(String(describing: error?.localizedDescription))")
                       
                       return
-                      
                     }
                   })
                 }
