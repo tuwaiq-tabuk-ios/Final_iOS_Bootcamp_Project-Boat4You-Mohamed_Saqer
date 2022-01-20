@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1006EBC0279877A9005953F2 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1006EBBF279877A9005953F2 /* Section.swift */; };
 		1028FB63279586E900B4CEDE /* FSUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1028FB62279586E900B4CEDE /* FSUserManager.swift */; };
 		1028FB662795874000B4CEDE /* FSCollectionRefernce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1028FB652795874000B4CEDE /* FSCollectionRefernce.swift */; };
 		1028FB692795882300B4CEDE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1028FB682795882300B4CEDE /* Constants.swift */; };
@@ -51,9 +52,11 @@
 		10CDDD6B27817BA70041C2B2 /* ForgotOwnerPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CDDD6A27817BA70041C2B2 /* ForgotOwnerPassVC.swift */; };
 		10CDDD71278186560041C2B2 /* OwnerProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CDDD70278186560041C2B2 /* OwnerProfileVC.swift */; };
 		10D41B7827971BF000B3E97A /* ImageEditingCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D41B7727971BF000B3E97A /* ImageEditingCVCell.swift */; };
+		10DEBB5727990443003005ED /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DEBB5627990443003005ED /* UIView+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1006EBBF279877A9005953F2 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		1028FB62279586E900B4CEDE /* FSUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSUserManager.swift; sourceTree = "<group>"; };
 		1028FB652795874000B4CEDE /* FSCollectionRefernce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCollectionRefernce.swift; sourceTree = "<group>"; };
 		1028FB682795882300B4CEDE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -94,6 +97,7 @@
 		10CDDD6A27817BA70041C2B2 /* ForgotOwnerPassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotOwnerPassVC.swift; sourceTree = "<group>"; };
 		10CDDD70278186560041C2B2 /* OwnerProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerProfileVC.swift; sourceTree = "<group>"; };
 		10D41B7727971BF000B3E97A /* ImageEditingCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageEditingCVCell.swift; sourceTree = "<group>"; };
+		10DEBB5627990443003005ED /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				1028FB6B279588AA00B4CEDE /* UIViewController+Ext.swift */,
+				10DEBB5627990443003005ED /* UIView+Ext.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -263,6 +268,7 @@
 			children = (
 				1080531B2770AEB4006A4012 /* Store.swift */,
 				10C320032785BCB80038FD0D /* Order.swift */,
+				1006EBBF279877A9005953F2 /* Section.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -412,6 +418,7 @@
 				109BE44F2794209B00EC0EB2 /* LoginVC.swift in Sources */,
 				1080531027706A2A006A4012 /* WelcomeVC.swift in Sources */,
 				106723E42782DE58007B271E /* RequestCVCell.swift in Sources */,
+				1006EBC0279877A9005953F2 /* Section.swift in Sources */,
 				1028FB662795874000B4CEDE /* FSCollectionRefernce.swift in Sources */,
 				1062A295276F1A0A00B9E46C /* OffersCollectionVC.swift in Sources */,
 				10492E412779D8F1000F1D12 /* ClientProfileVC.swift in Sources */,
@@ -433,6 +440,7 @@
 				10C320002785939F0038FD0D /* UpdateUserInfoVC.swift in Sources */,
 				109BE44627941DFB00EC0EB2 /* UploadOffersVC.swift in Sources */,
 				10669699276612D800A660AC /* AppDelegate.swift in Sources */,
+				10DEBB5727990443003005ED /* UIView+Ext.swift in Sources */,
 				1042C36C277C947600C9AAFD /* StoreImageCVCell.swift in Sources */,
 				107E80BD276A158B00811237 /* CollectionVC.swift in Sources */,
 				1066969B276612D800A660AC /* SceneDelegate.swift in Sources */,

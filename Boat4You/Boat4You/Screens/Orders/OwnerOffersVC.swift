@@ -34,13 +34,13 @@ class OwnerOffersVC: UIViewController,
     let db = Firestore.firestore()
     let auth = Auth.auth().currentUser!
     collectionRF = db.collection("stores").document(auth.uid).collection("store")
+    hideKeyboardWhenTappedAround()
   }
   
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    stopTouchView.isUserInteractionEnabled = false
-    getData()
+    getDataFromFireStore()
   }
   
   // MARK: - IBAction
@@ -66,7 +66,7 @@ class OwnerOffersVC: UIViewController,
     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
     let nextViewController = storyBoard.instantiateViewController(withIdentifier: "EditOwnerInfoVC") as! EditOwnerInfoVC
     
-    nextViewController.store = store[sender.tag]
+    nextViewController.stores = store[sender.tag]
     self.navigationController?.pushViewController(nextViewController, animated: true)
   }
   
@@ -86,9 +86,9 @@ class OwnerOffersVC: UIViewController,
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OrdersCell", for: indexPath) as! OwnerOrderCVCell
     
     cell.orderImage.sd_setImage(with: URL(string: store[indexPath.row].logo),
-                                placeholderImage: UIImage(named: "Craft"))
+                                placeholderImage: UIImage(named: "PlaceHolder"))
     
-    cell.orderTitle.text = store[indexPath.row].captainName
+    cell.orderTitle.text = store[indexPath.row].title
     cell.orderPrice.text = store[indexPath.row].price
     cell.editButoon.tag = indexPath.row
     cell.removeCV.tag = indexPath.row
@@ -98,8 +98,9 @@ class OwnerOffersVC: UIViewController,
   
   
   // MARK: - Method
-  func getData() {
+  func getDataFromFireStore() {
     
+    stopTouchView.isUserInteractionEnabled = true;
     let db = Firestore.firestore()
     
     collectionRF.getDocuments { snapshot, error in
@@ -123,7 +124,7 @@ class OwnerOffersVC: UIViewController,
                   if key == datas["id"] as! String {
                     let dic = value as! Dictionary<String,Any>
                     let store1 = Store(id:   key,
-                                       captainName     :dic["productName"]        as! String,
+                                       captainName     :dic["captainName"]        as! String,
                                        logo            :dic["logo"]               as! String,
                                        price           :dic["price"]              as! String,
                                        images          :dic["images"]             as! Array,
@@ -134,7 +135,7 @@ class OwnerOffersVC: UIViewController,
                     
                     self.store.append(store1)
                     self.collectionViewE.reloadData()
-                    self.stopTouchView.isUserInteractionEnabled = true
+                    self.stopTouchView.isUserInteractionEnabled = true;
                 }
               }
             }
@@ -148,7 +149,7 @@ class OwnerOffersVC: UIViewController,
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     
     if let vc = segue.destination as? EditOwnerInfoVC {
-      vc.store = storeSelected
+      vc.stores = storeSelected
     }
   }
 }

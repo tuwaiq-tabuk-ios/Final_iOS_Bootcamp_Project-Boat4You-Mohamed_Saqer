@@ -11,17 +11,24 @@ import FirebaseAuth
 
 class UpdateOwnerInfoVC: UIViewController {
   
+  
   // MARK: -IBOutlet
+ 
   @IBOutlet weak var firstNameField: UITextField!
   @IBOutlet weak var lastNameField: UITextField!
   @IBOutlet weak var emailField: UITextField!
   
   
   // MARK: -  View Controller lifecycle
+  
   override func viewDidLoad() {
     super.viewDidLoad()
+    hideKeyboardWhenTappedAround()
   }
+ 
+  
   //MARK: - Action
+ 
   @IBAction func save(_ sender: Any) {
     let db = Firestore.firestore()
     let userID = Auth.auth().currentUser?.uid
@@ -39,11 +46,11 @@ class UpdateOwnerInfoVC: UIViewController {
         ], merge: true)
       }
     })
-    
   }
   
   
   //MARK: - Methods
+ 
   func updateOwnerProfile () {
     
     let db = Firestore.firestore()

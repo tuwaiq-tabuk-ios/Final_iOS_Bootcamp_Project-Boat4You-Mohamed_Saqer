@@ -12,37 +12,33 @@ import FirebaseStorage
 import FirebaseFirestore
 
 class EditOwnerInfoVC: UIViewController,
-                       UICollectionViewDelegate,
-                       UICollectionViewDataSource,
-                       PHPickerViewControllerDelegate,
-                       UIPickerViewDelegate,
-                       UIPickerViewDataSource,
-                       UIImagePickerControllerDelegate,
                        UINavigationBarDelegate,
                        UINavigationControllerDelegate {
   
-  //MARK:- IBOutlet
-  @IBOutlet weak var uploadedImagesCV: UICollectionView!
-  @IBOutlet weak var editNameField: UITextField!
-  @IBOutlet weak var editPriceField: UITextField!
-  @IBOutlet weak var editTitleField: UITextField!
-  @IBOutlet weak var editLocationField: UITextField!
-  @IBOutlet weak var editTypeField: UITextField!
+  //MARK: - IBOutlet
+ 
+  @IBOutlet weak var uploadedImagesCV    : UICollectionView!
+  @IBOutlet weak var editNameField       : UITextField!
+  @IBOutlet weak var editPriceField      : UITextField!
+  @IBOutlet weak var editTitleField      : UITextField!
+  @IBOutlet weak var editLocationField   : UITextField!
+  @IBOutlet weak var editTypeField       : UITextField!
   @IBOutlet weak var editDescriptionField: UITextField!
-  @IBOutlet weak var logoImage: UIImageView!
-  @IBOutlet weak var progressBar: UIProgressView!
+  @IBOutlet weak var logoImage           : UIImageView!
+  @IBOutlet weak var progressBar         : UIProgressView!
   
   
   //MARK: - Properties
   
   let cityPicker = UIPickerView()
   let typePicker = UIPickerView()
-  var citiesArr = ["Duba","Umlaj","Alwajeh","Jeddah"]
-  var typeArr = ["Craft","Boat"]
-  var arryPhoto = [UIImage]()
+  var citiesList = ["Duba","Umlaj","Alwajeh","Jeddah"]
+  var typeList = ["Craft","Boat"]
+  var imagesArray = [UIImage]()
   var currentIndex = 0
   var oldType:String!
-  var store:Store!
+  var stores:Store!
+  
   
   //MARK: - View Controller Lifecycle
   
@@ -58,22 +54,25 @@ class EditOwnerInfoVC: UIViewController,
     uploadedImagesCV.dataSource = self
     
     progressBar.progress = 0.0
+  
+    typePicking ()
+    cityPicking ()
   }
   
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
-    editNameField.text        = store!.captainName
-    editPriceField.text       = store!.price
-    editTitleField.text       = store!.title
-    editLocationField.text    = store!.selectCity
-    editTypeField.text        = store!.selectType
-    editDescriptionField.text = store!.offerDescription
-    oldType                   = store!.selectType.lowercased()
+    editNameField.text        = stores!.captainName
+    editPriceField.text       = stores!.price
+    editTitleField.text       = stores!.title
+    editLocationField.text    = stores!.selectCity
+    editTypeField.text        = stores!.selectType
+    editDescriptionField.text = stores!.offerDescription
+    oldType                   = stores!.selectType.lowercased()
     
     let imageView = UIImageView()
-    imageView.sd_setImage(with: URL(string: store.logo),
+    imageView.sd_setImage(with: URL(string: stores.logo),
                           placeholderImage: UIImage(named: ""))
     
     logoImage.image = imageView.image
@@ -89,15 +88,16 @@ class EditOwnerInfoVC: UIViewController,
   
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
-    store = nil
-    arryPhoto.removeAll()
+    stores = nil
+    imagesArray.removeAll()
   }
   
   
   //MARK: - IBAction
+ 
   @IBAction func deletImagePressed(_ sender: UIButton) {
     let index = sender.tag
-    arryPhoto.remove(at: index)
+    imagesArray.remove(at: index)
     uploadedImagesCV.reloadData()
   }
   
@@ -118,6 +118,7 @@ class EditOwnerInfoVC: UIViewController,
  
   
   //MARK: - Methods
+  
   func sendUpdatedDataToFireStore () {
     
     self.navigationController?.navigationBar.isUserInteractionEnabled = false;
@@ -126,7 +127,7 @@ class EditOwnerInfoVC: UIViewController,
     let auth = Auth.auth().currentUser
     let storage = Storage.storage()
     var imageID = UUID().uuidString
-    let imageFolderID = store!.id
+    let imageFolderID = stores!.id
     
     let uploadMetadata = StorageMetadata()
     uploadMetadata.contentType = "image/jpeg"
@@ -136,7 +137,7 @@ class EditOwnerInfoVC: UIViewController,
       let document = db.collection("sections").document(oldType)
       
       document.updateData([
-        self.store.id: FieldValue.delete()
+        self.stores.id: FieldValue.delete()
       ])
     }
     
@@ -147,7 +148,7 @@ class EditOwnerInfoVC: UIViewController,
     database.setData(
       ["\(imageFolderID)"   : [
         "title"             :self.editTitleField.text!,
-        "productName"       :self.editNameField.text!,
+        "captainName"       :self.editNameField.text!,
         "price"             :self.editPriceField.text!,
         "selectCity"        :self.editLocationField.text!,
         "selectType"        :self.editTypeField.text!,
@@ -196,7 +197,7 @@ class EditOwnerInfoVC: UIViewController,
                   
                   var imageData = [Data]()
                   
-                  for image in arryPhoto {
+                  for image in imagesArray {
                     let data = image.jpegData(compressionQuality: 0.5)
                     imageData.append(data!)
                   }
@@ -219,7 +220,7 @@ class EditOwnerInfoVC: UIViewController,
                           //Database
                           
                           db.collection("sections").document(type!).setData(["\(imageFolderID)" : [
-                            "productName"       :self.editNameField.text!,
+                            "captainName"       :self.editNameField.text!,
                             "price"             :self.editPriceField.text!,
                             "selectCity"        :self.editLocationField.text!,
                             "selectType"        :self.editTypeField.text!,
@@ -251,14 +252,15 @@ class EditOwnerInfoVC: UIViewController,
   
   
   //MARK: - Upload Images
+ 
   func getImages() {
-    self.arryPhoto.removeAll()
-    if store.images.count >= 1 {
-      for images in store.images {
+    self.imagesArray.removeAll()
+    if stores.images.count >= 1 {
+      for images in stores.images {
         let imageView = UIImageView()
         imageView.sd_setImage(with: URL(string: images),
                               placeholderImage: UIImage(named: "")) { image, error, _, _ in
-          self.arryPhoto.append(image!)
+          self.imagesArray.append(image!)
           self.uploadedImagesCV.reloadData()
         }
       }
@@ -276,6 +278,7 @@ class EditOwnerInfoVC: UIViewController,
   
   
   //MARK: - Pickers
+ 
   func cityPicking () {
     
     let toolBarCity = UIToolbar()
@@ -313,67 +316,20 @@ class EditOwnerInfoVC: UIViewController,
   }
   
   
-  
   @objc func closeCityPicker () {
-    editLocationField.text = citiesArr[currentIndex]
+    editLocationField.text = citiesList[currentIndex]
     editLocationField.resignFirstResponder()
   }
   
   
   @objc func closeTypePicker () {
-    editTypeField.text = typeArr[currentIndex]
+    editTypeField.text = typeList[currentIndex]
     editTypeField.resignFirstResponder()
   }
   
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     view.endEditing(true)
-  }
-  
-  
-  func numberOfComponents(in pickerView: UIPickerView) -> Int {
-    return 1
-  }
-  
-  
-  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-    if (pickerView == cityPicker) {
-      return citiesArr.count
-    } else {
-      return typeArr.count
-    }
-  }
-  
-  
-  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-    if (pickerView == cityPicker) {
-      return citiesArr[row]
-    } else {
-      return typeArr[row]
-    }
-  }
-  
-  
-  func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-    currentIndex = row
-    if (pickerView == cityPicker){
-      editLocationField.text = citiesArr[row]
-    } else {
-      editTypeField.text = typeArr[row]
-    }
-  }
-  
-  
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return arryPhoto.count
-  }
-  
-  
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = uploadedImagesCV.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! ImageEditingCVCell
-    cell.collectionImage.image = arryPhoto[indexPath.row]
-    
-    return cell
   }
   
   
@@ -385,26 +341,6 @@ class EditOwnerInfoVC: UIViewController,
     let phPickre = PHPickerViewController(configuration: config)
     phPickre.delegate = self
     present(phPickre, animated: true, completion: nil)
-  }
-  
-  
-  func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-    dismiss(animated: true, completion: nil)
-    for resulr in results{
-      print("\(results.count)")
-      resulr.itemProvider.loadObject(ofClass: UIImage.self, completionHandler: {
-        (imagePic,error) in
-        if let imagePice = imagePic as? UIImage {
-          DispatchQueue.main.async{
-            self.arryPhoto.append(imagePice)
-            self.uploadedImagesCV.reloadData()
-          }
-        } else {
-          
-        }
-      }
-      )
-    }
   }
   
   
@@ -426,7 +362,92 @@ class EditOwnerInfoVC: UIViewController,
                                   handler: nil))
     present(alert, animated: true, completion: nil)
   }
+}
+
+
+//MARK: - UICollectionView
+ 
+extension EditOwnerInfoVC: UICollectionViewDelegate,
+                           UICollectionViewDataSource{
   
+  
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return imagesArray.count
+  }
+  
+  
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = uploadedImagesCV.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! ImageEditingCVCell
+    cell.collectionImage.image = imagesArray[indexPath.row]
+    
+    return cell
+  }
+}
+
+
+//MARK: - Upload Image
+
+extension EditOwnerInfoVC:  UIPickerViewDelegate,
+                            UIPickerViewDataSource{
+  
+  func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    return 1
+  }
+  
+  
+  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    if (pickerView == cityPicker) {
+      return citiesList.count
+    } else {
+      return typeList.count
+    }
+  }
+  
+  
+  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    if (pickerView == cityPicker) {
+      return citiesList[row]
+    } else {
+      return typeList[row]
+    }
+  }
+  
+  
+  func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    currentIndex = row
+    if (pickerView == cityPicker){
+      editLocationField.text = citiesList[row]
+    } else {
+      editTypeField.text = typeList[row]
+    }
+  }
+}
+
+
+//MARK: - Upload Image
+
+extension EditOwnerInfoVC: PHPickerViewControllerDelegate,
+                           UIImagePickerControllerDelegate {
+  
+  func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+    dismiss(animated: true, completion: nil)
+    for resulr in results{
+      print("\(results.count)")
+      resulr.itemProvider.loadObject(ofClass: UIImage.self, completionHandler: {
+        (imagePic,error) in
+        if let imagePice = imagePic as? UIImage {
+          DispatchQueue.main.async{
+            self.imagesArray.append(imagePice)
+            self.uploadedImagesCV.reloadData()
+          }
+        } else {
+          
+        }
+      }
+      )
+    }
+  }
+
   
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
     dismiss(animated: true, completion: nil)
@@ -437,4 +458,3 @@ class EditOwnerInfoVC: UIViewController,
     logoImage.image = image
   }
 }
-

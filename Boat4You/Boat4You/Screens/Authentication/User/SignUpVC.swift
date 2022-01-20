@@ -23,6 +23,7 @@ class SignUpVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     errorLabel.isHidden = true
+    hideKeyboardWhenTappedAround()
   }
   
   
@@ -95,5 +96,15 @@ class SignUpVC: UIViewController {
     }
     
   }
+  
+  
+  @IBAction func alredyHaveAnAccountPressed(_ sender: UIButton) {
+    
+    let storyBoard = UIStoryboard (name: "Main", bundle: nil)
+    let vc = storyBoard.instantiateViewController(withIdentifier: "Login")
+    vc.modalPresentationStyle = .overFullScreen
+    present(vc ,animated: true)
+  }
+  
   
 }

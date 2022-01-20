@@ -7,8 +7,8 @@
 
 import UIKit
 
-
 struct Order: Equatable {
+ 
   var phoneNumner: String
   var dateUploaded: String
   var docID: String

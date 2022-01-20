@@ -34,7 +34,7 @@ class DetailsVC: UIViewController,
         
 //        detailsView.dropShadow(radius: radius, opacity: 0.2, color: .black)
 //      bookingButtonOutlet.dropShadow(radius: radius, opacity: 0.2, color: .black)
-        
+      hideKeyboardWhenTappedAround()
     }
     
     
@@ -59,7 +59,7 @@ class DetailsVC: UIViewController,
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imagesCell", for: indexPath) as! StoreImageCVCell
         
-        cell.storeImages.sd_setImage(with: URL(string: store.images[indexPath.row]), placeholderImage: UIImage(named: "Craft"))
+        cell.storeImages.sd_setImage(with: URL(string: store.images[indexPath.row]), placeholderImage: UIImage(named: "PlaceHolder"))
         return cell
     }
     

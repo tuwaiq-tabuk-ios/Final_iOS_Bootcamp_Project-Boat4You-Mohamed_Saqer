@@ -12,16 +12,22 @@ class OwnerLoginVC: UIViewController {
   
   
   //MARK: -IBOutlet
+  
   @IBOutlet weak var emailField: UITextField!
   @IBOutlet weak var passwordField: UITextField!
+  @IBOutlet weak var errorLabel: UILabel!
   
   //MARK: -
+ 
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.hideKeyboardWhenTappedAround()
+    errorLabel.isHidden = true
   }
   
   
   //MARK: - IBAction
+ 
   @IBAction func loginPressed(_ sender: UIButton) {
     validateFields()
     ownerLogin()
@@ -35,15 +41,21 @@ class OwnerLoginVC: UIViewController {
     present(vc,animated: true)
   }
   
+  
   //MARK: - Login
+  
   func validateFields() {
     if emailField.text? .isEmpty == true {
       print("No Email Text")
+      errorLabel.isHidden = false
+      errorLabel.text = "Please enter your email"
       return
     }
     
     if passwordField.text? .isEmpty == true {
       print("No Password Text")
+      errorLabel.isHidden = false
+      errorLabel.text = "Please enter your password"
       return
     }
   }
@@ -88,27 +100,18 @@ class OwnerLoginVC: UIViewController {
          
           } else {
             
-            let alert = UIAlertController(title: "Error",
-                                          message: "Error",
-                                          preferredStyle: .alert)
-            
-            let action = UIAlertAction(title: "Ok",
-                                       style: .cancel,
-                                       handler: nil)
-            alert.addAction(action)
-            
-            
+            self.errorLabel.isHidden = false
+            self.errorLabel.text = "You have an user account!"
             do {
               try Auth.auth().signOut()
             } catch {
            }
-            
-            self.present(alert, animated: true, completion: nil)
           }
         }
       }
     }
   }
+  
   
   @IBAction func forgotPassTapped(_ sender: UIButton) {
     self.performSegue(withIdentifier: "forgotOwnerPassSegue", sender: nil)

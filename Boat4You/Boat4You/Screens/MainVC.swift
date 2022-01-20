@@ -11,22 +11,13 @@ import FirebaseAuth
 import SDWebImage
 import FirebaseFirestore
 
-struct Section {
-  let name:String
-  let image:String
-  let stores:[Store]
-}
-
-class MainVC: UIViewController,
-              UICollectionViewDelegate,
-              UICollectionViewDataSource,
-              UICollectionViewDelegateFlowLayout {
+class MainVC: UIViewController {
   
-  
-  
+  //MARK: - IBOutlet
   
   @IBOutlet weak var collectionView:UICollectionView!
   
+  //MARK: - Properties
   
   var selectedSection:[Store]!
   var array:[Section] = [Section]()
@@ -34,33 +25,13 @@ class MainVC: UIViewController,
   var dataFilter: [Store]!
   
   
-  
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return array.count
-  }
-  
-  
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReusableCell", for: indexPath) as! CollectionVC
-    
-    cell.imageView.sd_setImage(with: URL(string: array[indexPath.row].image), placeholderImage: UIImage(named: "Item"))
-    
-    cell.labelView.text = array[indexPath.row].name
-    return cell
-  }
-  
-  
+  //MARK: - View Controller lifecycle
+
   override func viewDidLoad() {
     super.viewDidLoad()
     collectionView.delegate = self
     collectionView.dataSource = self
-    getData()
-  }
-  
-  
-  func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-    selectedSection = array[indexPath.row].stores
-    return true
+    getDataFromFireStore()
   }
   
   
@@ -71,11 +42,11 @@ class MainVC: UIViewController,
   }
   
   
-  func getData() {
+  //MARK: - Methods
+  func getDataFromFireStore() {
     
     let db = Firestore.firestore()
     let auth = Auth.auth().currentUser
-    
     
     let collectionRF:CollectionReference = db.collection("sections")
     collectionRF.getDocuments { snapshot, error in
@@ -90,7 +61,7 @@ class MainVC: UIViewController,
             for (key,value) in datas {
               let data = value as! Dictionary<String,Any>
               
-              arrayStore.append(Store(id: key, captainName: data["productName"] as! String,
+              arrayStore.append(Store(id: key, captainName: data["captainName"] as! String,
                                       logo: data["logo"] as! String,
                                       price: data["price"] as! String,
                                       images: data["images"] as! Array,
@@ -111,7 +82,7 @@ class MainVC: UIViewController,
             for (key,value) in datas {
               let data = value as! Dictionary<String,Any>
               
-              arrayStore.append(Store(id: key, captainName: data["productName"] as! String,
+              arrayStore.append(Store(id: key, captainName: data["captainName"] as! String,
                                       logo: data["logo"] as! String,
                                       price: data["price"] as! String,
                                       images: data["images"] as! Array,
@@ -129,7 +100,32 @@ class MainVC: UIViewController,
         self.collectionView.reloadData()
       }
     }
-    
   }
 }
 
+
+//MARK: - Collection View
+extension MainVC: UICollectionViewDelegate,
+                  UICollectionViewDataSource,
+                  UICollectionViewDelegateFlowLayout {
+                    
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+                      return array.count
+                    }
+                    
+                    
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReusableCell", for: indexPath) as! CollectionVC
+                      
+          cell.imageView.sd_setImage(with: URL(string: array[indexPath.row].image), placeholderImage: UIImage(named: "Item"))
+                      
+          cell.labelView.text = array[indexPath.row].name
+                        return cell
+                    }
+       
+  
+  func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+                      selectedSection = array[indexPath.row].stores
+                      return true
+                    }
+                  }

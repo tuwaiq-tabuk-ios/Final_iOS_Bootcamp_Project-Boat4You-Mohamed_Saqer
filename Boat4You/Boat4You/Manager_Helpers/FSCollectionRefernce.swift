@@ -12,7 +12,6 @@ enum FSCollectionReference: String {
   case users
 }
 
-
 func getFSCollectionReference(
 _ collectionReference: FSCollectionReference
 ) -> CollectionReference {

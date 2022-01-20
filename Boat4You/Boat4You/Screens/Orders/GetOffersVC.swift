@@ -26,6 +26,7 @@ class GetOffersVC: UIViewController,
     super.viewDidLoad()
     ordersCollectionView.delegate = self
     ordersCollectionView.dataSource = self
+    hideKeyboardWhenTappedAround()
   }
   
   
@@ -87,6 +88,8 @@ class GetOffersVC: UIViewController,
       }
     }
   }
+  
+  
   // MARK: -Collection View methods
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

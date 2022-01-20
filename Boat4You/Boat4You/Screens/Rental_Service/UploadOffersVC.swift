@@ -10,16 +10,14 @@ import PhotosUI
 import Firebase
 import FirebaseAuth
 import FirebaseFirestore
+import SwiftUI
 class UploadOffersVC: UIViewController,
-                                 UIImagePickerControllerDelegate,
-                                 UINavigationControllerDelegate,
-                                 UIPickerViewDataSource,
-                                 UIPickerViewDelegate,
-                                 UITextViewDelegate,
-                                 UICollectionViewDelegate,
-                                 UICollectionViewDataSource,PHPickerViewControllerDelegate{
+                      UINavigationControllerDelegate,
+                      UITextViewDelegate{
+  
   
   // MARK: - IBOutlets
+  
   @IBOutlet weak var captainNameField: UITextField!
   @IBOutlet weak var priceField: UITextField!
   @IBOutlet weak var selectCityField: UITextField!
@@ -28,9 +26,12 @@ class UploadOffersVC: UIViewController,
   @IBOutlet weak var uploadImagesCV: UICollectionView!
   @IBOutlet weak var titleField: UITextField!
   @IBOutlet weak var logoImage: UIImageView!
-  
+ 
   @IBOutlet weak var errorLabel: UILabel!
+  
+  
   // MARK: - Properties
+  
   let cityPicker = UIPickerView()
   let typePicker = UIPickerView()
   var citiesList = ["Duba","Umlaj","Alwajeh","Jeddah"]
@@ -40,10 +41,12 @@ class UploadOffersVC: UIViewController,
   var toolBarCity = UIToolbar()
   var toolBarType = UIToolbar()
   
+  
   // MARK: - View Contrller Lifecycle
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-   
+    
     cityPicker.delegate = self
     cityPicker.delegate = self
     selectCityField.inputView = cityPicker
@@ -58,13 +61,15 @@ class UploadOffersVC: UIViewController,
     cityBar ()
     typeBar ()
     
-    errorLabel.isHidden = true
+    hideKeyboardWhenTappedAround()
+    
   }
   
- 
+
   // MARK: - IBActions
+  
   @IBAction func uploadImages(_ sender: UIButton) {
-    getPhotos()
+    getImages()
   }
   
   
@@ -78,9 +83,10 @@ class UploadOffersVC: UIViewController,
   }
   
   
-// MARK: - Pickers
+  // MARK: - Pickers
+  
   func cityBar () {
-   
+    
     toolBarCity = UIToolbar()
     toolBarCity.barStyle = UIBarStyle.default
     toolBarCity.isTranslucent = true
@@ -98,7 +104,7 @@ class UploadOffersVC: UIViewController,
   
   
   func typeBar () {
-   
+    
     toolBarType = UIToolbar()
     toolBarType.barStyle = UIBarStyle.default
     toolBarType.isTranslucent = true
@@ -114,9 +120,11 @@ class UploadOffersVC: UIViewController,
     selectTypeField.inputAccessoryView = toolBarType
   }
   
-  // MARK: - Upload offer data method
+  
+  // MARK: - Upload offer method
+  
   func uploadDataToFireStore () {
-   
+    
     let db = Firestore.firestore()
     let auth = Auth.auth().currentUser
     let storage = Storage.storage()
@@ -140,7 +148,7 @@ class UploadOffersVC: UIViewController,
     database.setData(
       ["\(imageFolderID)" : [
         "title":self.titleField.text!,
-        "productName":self.captainNameField.text!,
+        "captainName":self.captainNameField.text!,
         "price":self.priceField.text!,
         "selectCity":self.selectCityField.text!,
         "selectType":self.selectTypeField.text!,
@@ -188,6 +196,7 @@ class UploadOffersVC: UIViewController,
               }
               print("~~ Done")
               
+            
             })
           
           var imageData = [Data]()
@@ -199,7 +208,11 @@ class UploadOffersVC: UIViewController,
           for image in imageData {
             imageID = UUID().uuidString
             
-            let storageRf = storage.reference().child(auth!.uid).child(imageFolderID).child(imageID)
+            let storageRf = storage
+              .reference()
+              .child(auth!.uid)
+              .child(imageFolderID)
+              .child(imageID)
             storageRf.putData(image, metadata: uploadMetadata) { metadata, error in
               guard error == nil else {
                 return
@@ -209,10 +222,10 @@ class UploadOffersVC: UIViewController,
                 } else {
                   imageURL.append(url!.absoluteString)
                   
-                  //                        database
-                  
+                  //Database
+              
                   db.collection("sections").document(type!).setData(["\(imageFolderID)" : [
-                    "productName":self.captainNameField.text!,
+                    "captainName":self.captainNameField.text!,
                     "price":self.priceField.text!,
                     "selectCity":self.selectCityField.text!,
                     "selectType":self.selectTypeField.text!,
@@ -222,19 +235,17 @@ class UploadOffersVC: UIViewController,
                     
                   ]],merge: true, completion: {
                     error in
+                  
                     guard error == nil else {
                       print("~~ error: \(String(describing: error?.localizedDescription))")
+                      
                       return
+                      
                     }
-                    print("~~ Done")
-                    errorLabel.isHidden = false
-                    errorLabel.text = "Uploaded Succesfully!"
                   })
-                  
                 }
               }
             }
-            
           }
         }
       }
@@ -245,60 +256,21 @@ class UploadOffersVC: UIViewController,
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     view.endEditing(true)
   }
-  
-  
-  func numberOfComponents(in pickerView: UIPickerView) -> Int {
-    return 1
-  }
-  
-  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-    if (pickerView == cityPicker) {
-      return citiesList.count
-    } else {
-      return typeList.count
-    }
-  }
-  
-  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-    if (pickerView == cityPicker) {
-      return citiesList[row]
-    } else {
-      return typeList[row]
-    }
-  }
-  
-  func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-    currentIndex = row
-    if (pickerView == cityPicker){
-      selectCityField.text = citiesList[row]
-    } else {
-      selectTypeField.text = typeList[row]
-    }
-  }
+
   
   @objc func closeCityPicker () {
     selectCityField.text = citiesList[currentIndex]
     selectCityField.resignFirstResponder()
   }
   
+  
   @objc func closeTypePicker () {
     selectTypeField.text = typeList[currentIndex]
     selectTypeField.resignFirstResponder()
   }
+ 
   
-  
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return imagesArray.count
-  }
-  
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = uploadImagesCV.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! ImageCVCell
-    cell.imgSelected.image = imagesArray[indexPath.row]
-    
-    return cell
-  }
-  
-  func getPhotos(){
+  func getImages(){
     var config = PHPickerConfiguration()
     config.filter = .images
     config.selectionLimit = 5
@@ -306,7 +278,74 @@ class UploadOffersVC: UIViewController,
     let phPickre = PHPickerViewController(configuration: config)
     phPickre.delegate = self
     present(phPickre, animated: true, completion: nil)
-    
+  }
+  
+  
+  func getLogo(type: UIImagePickerController.SourceType){
+    let pickerCont = UIImagePickerController()
+    pickerCont.sourceType = type
+    pickerCont.allowsEditing = false
+    pickerCont.delegate = self
+    present(pickerCont, animated: true, completion: nil)
+  }
+  
+  
+  func showPhotoAlert(){
+    let alert = UIAlertController(title: "Take Photo From:", message: nil, preferredStyle: .actionSheet)
+    alert.addAction(UIAlertAction(title: "Camera",
+                                  style: .default,
+                                  handler: { action in
+      self.getLogo(type: .camera)
+    }))
+    alert.addAction(UIAlertAction(title: "Photo Library",
+                                  style: .default,
+                                  handler: { action in
+      self.getLogo(type: .photoLibrary)
+    }))
+    alert.addAction(UIAlertAction(title:
+                                    "Cancel",
+                                  style: .cancel,
+                                  handler: nil))
+    present(alert, animated: true, completion: nil)
+  }
+}
+
+
+
+// MARK: - UICollectionView
+
+extension UploadOffersVC: UICollectionViewDelegate,
+                          UICollectionViewDataSource {
+                            
+                            
+                            
+                            func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+                              return imagesArray.count
+                            }
+                            
+                            
+                            func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+                              let cell = uploadImagesCV.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! ImageCVCell
+                              cell.imgSelected.image = imagesArray[indexPath.row]
+                              
+                              return cell
+                            }
+                          }
+
+
+// MARK: - Image Pickers
+
+extension UploadOffersVC: UIImagePickerControllerDelegate,
+                          PHPickerViewControllerDelegate{
+  
+  
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    dismiss(animated: true, completion: nil)
+    guard let image = info[.originalImage] as? UIImage else {
+      print("Image Not Found")
+      return
+    }
+    logoImage.image = image
   }
   
   
@@ -328,40 +367,48 @@ class UploadOffersVC: UIViewController,
       )
     }
   }
+}
+
+
+// MARK: - UIPickerView
+
+extension UploadOffersVC: UIPickerViewDataSource,
+                          UIPickerViewDelegate {
   
-  func showPhotoAlert(){
-    let alert = UIAlertController(title: "Take Photo From:", message: nil, preferredStyle: .actionSheet)
-    alert.addAction(UIAlertAction(title: "Camera",
-                                  style: .default,
-                                  handler: { action in
-      self.getPhoto(type: .camera)
-    }))
-    alert.addAction(UIAlertAction(title: "Photo Library",
-                                  style: .default,
-                                  handler: { action in
-      self.getPhoto(type: .photoLibrary)
-    }))
-    alert.addAction(UIAlertAction(title:
-                                    "Cancel",
-                                  style: .cancel,
-                                  handler: nil))
-    present(alert, animated: true, completion: nil)
-  }
-  func getPhoto(type: UIImagePickerController.SourceType){
-    let pickerCont = UIImagePickerController()
-    pickerCont.sourceType = type
-    pickerCont.allowsEditing = false
-    pickerCont.delegate = self
-    present(pickerCont, animated: true, completion: nil)
+  func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    return 1
   }
   
   
-  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-    dismiss(animated: true, completion: nil)
-    guard let image = info[.originalImage] as? UIImage else {
-      print("Image Not Found")
-      return
+  func pickerView(_ pickerView: UIPickerView,
+                  numberOfRowsInComponent component: Int) -> Int {
+    if (pickerView == cityPicker) {
+      return citiesList.count
+    } else {
+      return typeList.count
     }
-    logoImage.image = image
+  }
+  
+  
+  func pickerView(_ pickerView: UIPickerView,
+                  titleForRow row: Int,
+                  forComponent component: Int) -> String? {
+    if (pickerView == cityPicker) {
+      return citiesList[row]
+    } else {
+      return typeList[row]
+    }
+  }
+  
+  
+  func pickerView(_ pickerView: UIPickerView,
+                  didSelectRow row: Int,
+                  inComponent component: Int) {
+    currentIndex = row
+    if (pickerView == cityPicker){
+      selectCityField.text = citiesList[row]
+    } else {
+      selectTypeField.text = typeList[row]
+    }
   }
 }

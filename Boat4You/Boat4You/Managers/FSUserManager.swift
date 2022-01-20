@@ -8,9 +8,6 @@
 import Foundation
 import Firebase
 
-
-
-
   class FSUserManager {
     static let shared = FSUserManager()
     

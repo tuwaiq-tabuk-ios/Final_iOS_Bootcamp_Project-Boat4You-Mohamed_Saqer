@@ -10,11 +10,15 @@ import Firebase
 import FirebaseAuth
 class OwnerProfileVC: UIViewController {
 
-    override func viewDidLoad() {
+   
+  //MARK: - View Controller lifecycle
+  override func viewDidLoad() {
         super.viewDidLoad()
+      hideKeyboardWhenTappedAround()
     }
     
 
+  //MARK: - IBAction
   @IBAction func ownerLogOutPressed(_ sender: UIButton) {
   
     let auth = Auth.auth()

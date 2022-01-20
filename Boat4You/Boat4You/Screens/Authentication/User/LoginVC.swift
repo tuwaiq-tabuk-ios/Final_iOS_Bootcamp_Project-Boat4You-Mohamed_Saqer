@@ -20,6 +20,7 @@ class LoginVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     errorLabel.isHidden = true
+    hideKeyboardWhenTappedAround()
   }
   
   
@@ -33,7 +34,7 @@ class LoginVC: UIViewController {
   @IBAction func createAccountTapped(_ sender: UIButton) {
     let storyBoard = UIStoryboard (name: "Main", bundle: nil)
     let vc = storyBoard.instantiateViewController(withIdentifier: "SignUp")
-    vc.modalPresentationStyle = .overFullScreen
+    vc.modalPresentationStyle = .automatic
     present(vc,animated: true)
   }
   
@@ -93,14 +94,14 @@ class LoginVC: UIViewController {
           } else {
             
             self.errorLabel.isHidden = false
-            self.errorLabel.text = "You have an owner account!\n please try sign on owners window"
+            self.errorLabel.text = "You have an owner account!"
             
             do {
               try Auth.auth().signOut()
             } catch {
               
             }
-          
+            
             
           }
         }

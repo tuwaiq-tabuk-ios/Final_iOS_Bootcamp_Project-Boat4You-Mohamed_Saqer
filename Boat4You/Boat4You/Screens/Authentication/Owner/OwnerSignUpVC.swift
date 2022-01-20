@@ -23,6 +23,7 @@ class OwnerSignUpVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     errorLabel.isHidden = true
+    hideKeyboardWhenTappedAround()
   }
   
   
@@ -32,33 +33,33 @@ class OwnerSignUpVC: UIViewController {
     guard let email = emailField.text,
                 email.isEmpty == false else {
                   errorLabel.isHidden = false
-                  errorLabel.text = "Fill in the email"
+                  errorLabel.text = "You didn't write your email"
                   return
                 }
            
           guard let password = passwordField.text,
                 password.isEmpty == false else {
                   errorLabel.isHidden = false
-                  errorLabel.text = "Enter the password"
+                  errorLabel.text = "You didn't write your password"
                   return
                 }
            guard let confirmPassword = confirmPasswordField.text,
                  confirmPassword.isEmpty == false else {
                    errorLabel.isHidden = false
-                   errorLabel.text = "Enter the password"
+                   errorLabel.text = "Confirm your password"
                    return
                  }
            guard let firstName = firstNameField.text,
                     firstName.isEmpty == false else {
                       errorLabel.isHidden = false
-                      errorLabel.text = "Fill in the first name"
+                      errorLabel.text = "Write your first name"
                       return
                     }
                
               guard let lastName = lastNameField.text,
                     lastName.isEmpty == false else {
                       errorLabel.isHidden = false
-                      errorLabel.text = "Fill in the last name"
+                      errorLabel.text = "Write your last name"
                       return
                     }
    
@@ -130,7 +131,7 @@ class OwnerSignUpVC: UIViewController {
           let vc = storyBoard.instantiateViewController(
             withIdentifier: K.OwnerStoryboard.mainHomeVCIdentifier
           )
-          vc.modalPresentationStyle = .overFullScreen
+          vc.modalPresentationStyle = .automatic
           
           self.present(vc ,animated: true)
         } else {

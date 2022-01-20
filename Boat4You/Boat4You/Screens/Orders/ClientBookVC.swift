@@ -23,6 +23,7 @@ class ClientBookVC: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    hideKeyboardWhenTappedAround()
   }
   
   // MARK: - IBAction
@@ -38,7 +39,7 @@ class ClientBookVC: UIViewController {
     
     ref.setData([
       "phoneNumber"  : self.phoneNumber.text!,
-      "dateTextField": self.dateTextField.text!,
+      "date": self.dateTextField.text!,
       "docID"        : ref.documentID,
       "id"           : dataRequested.id
     ], merge: true) { error in

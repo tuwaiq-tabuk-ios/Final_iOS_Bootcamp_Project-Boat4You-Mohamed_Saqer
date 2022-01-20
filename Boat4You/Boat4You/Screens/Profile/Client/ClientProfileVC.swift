@@ -9,19 +9,22 @@ import UIKit
 import Firebase
 class ClientProfileVC: UIViewController {
 
-    
-    
+  
+  //MARK: - View Controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+      hideKeyboardWhenTappedAround()
     }
     
-    @IBAction func logOutButtonTapped(_ sender: UIButton) {
+  
+  //MARK: - IBAction
+    
+  @IBAction func logOutButtonTapped(_ sender: UIButton) {
         let auth = Auth.auth()
         
         do {
             try auth.signOut()
             self.dismiss(animated: true, completion:nil)
-            
         } catch let signOutError {
             let alert = UIAlertController(title: "Error", message: signOutError.localizedDescription, preferredStyle: UIAlertController.Style.alert)
             self.present(alert, animated: true, completion: nil)

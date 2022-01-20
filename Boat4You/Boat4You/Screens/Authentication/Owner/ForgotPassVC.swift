@@ -10,18 +10,19 @@ import Firebase
 class ForgotPassVC: UIViewController {
   
   //MARK: - IBOutlet
-  @IBOutlet weak var email: UITextField!
+  @IBOutlet weak var emailField: UITextField!
   
   
   //MARK: -
   override func viewDidLoad() {
     super.viewDidLoad()
+    hideKeyboardWhenTappedAround()
   }
   
   //MARK: - IBAction
   @IBAction func forgotPassTapped(_ sender: UIButton) {
     let auth = Auth.auth()
-    auth.sendPasswordReset(withEmail: email.text!) { (error) in
+    auth.sendPasswordReset(withEmail: emailField.text!) { (error) in
       
       if let error = error {
         let alert = UIAlertController(title: "Error",
