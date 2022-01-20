@@ -12,39 +12,35 @@ import FirebaseStorage
 import FirebaseFirestore
 
 class EditOwnerInfoVC: UIViewController,
-                       UICollectionViewDelegate,
-                       UICollectionViewDataSource,
-                       PHPickerViewControllerDelegate,
-                       UIPickerViewDelegate,
-                       UIPickerViewDataSource,
-                       UIImagePickerControllerDelegate,
                        UINavigationBarDelegate,
                        UINavigationControllerDelegate {
+  
+  //MARK: - IBOutlet
  
-
-  @IBOutlet weak var uploadedPicsCollection: UICollectionView!
-  @IBOutlet weak var editNameTextField: UITextField!
-  @IBOutlet weak var editPriceTextField: UITextField!
-  @IBOutlet weak var editTitleTextField: UITextField!
-  @IBOutlet weak var editLocationTextField: UITextField!
-  @IBOutlet weak var editTypeTextField: UITextField!
-  @IBOutlet weak var editDescriptionTextField: UITextField!
-  @IBOutlet weak var logoImage: UIImageView!
-  
-  @IBOutlet weak var progressBar: UIProgressView!
+  @IBOutlet weak var uploadedImagesCV    : UICollectionView!
+  @IBOutlet weak var editNameField       : UITextField!
+  @IBOutlet weak var editPriceField      : UITextField!
+  @IBOutlet weak var editTitleField      : UITextField!
+  @IBOutlet weak var editLocationField   : UITextField!
+  @IBOutlet weak var editTypeField       : UITextField!
+  @IBOutlet weak var editDescriptionField: UITextField!
+  @IBOutlet weak var logoImage           : UIImageView!
+  @IBOutlet weak var progressBar         : UIProgressView!
   
   
-//  @IBOutlet weak var editCollectionImage: UIImageView!
+  //MARK: - Properties
   
   let cityPicker = UIPickerView()
   let typePicker = UIPickerView()
-  var citiesArr = ["Duba","Umlaj","Alwajeh","Jeddah"]
-  var typeArr = ["Craft","Boat"]
-  var arryPhoto = [UIImage]()
+  var citiesList = ["Duba","Umlaj","Alwajeh","Jeddah"]
+  var typeList = ["Craft","Boat"]
+  var imagesArray = [UIImage]()
   var currentIndex = 0
   var oldType:String!
+  var stores:Store!
   
-  var store:Store!
+  
+  //MARK: - View Controller Lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -54,168 +50,111 @@ class EditOwnerInfoVC: UIViewController,
     typePicker.delegate = self
     typePicker.delegate = self
     
-    uploadedPicsCollection.delegate = self
-    uploadedPicsCollection.dataSource = self
-    
-    
-    let toolBarCity = UIToolbar()
-    let cityDoneButon = UIBarButtonItem(title: "Done",
-                                     style: .plain,
-                                     target: self,
-                                     action: #selector(closeCityPicker))
-    toolBarCity.setItems([cityDoneButon], animated: true)
-    toolBarCity.isUserInteractionEnabled = true
-    
-    editLocationTextField.inputView = cityPicker
-    editLocationTextField.inputAccessoryView = toolBarCity
-    
-    
-    
-    
-    let toolBarType = UIToolbar()
-    toolBarType.barStyle = UIBarStyle.default
-    toolBarType.isTranslucent = true
-    toolBarType.sizeToFit()
-    
-    let typeDoneButon = UIBarButtonItem(title: "Done",
-                                     style: .plain,
-                                     target: self,
-                                     action: #selector(closeTypePicker))
-    toolBarType.setItems([typeDoneButon], animated: true)
-    toolBarType.isUserInteractionEnabled = true
-    editTypeTextField.inputView = typePicker
-    editTypeTextField.inputAccessoryView = toolBarType
+    uploadedImagesCV.delegate = self
+    uploadedImagesCV.dataSource = self
     
     progressBar.progress = 0.0
-    
-    
-  }
   
+    typePicking ()
+    cityPicking ()
+  }
   
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
-    editNameTextField.text = store!.productName
-    editPriceTextField.text = store!.price
-    editTitleTextField.text = store!.title
-    editLocationTextField.text = store!.selectCity
-    editTypeTextField.text = store!.selectType
-    editDescriptionTextField.text = store!.productDescription
-    oldType = store!.selectType.lowercased()
+    editNameField.text        = stores!.captainName
+    editPriceField.text       = stores!.price
+    editTitleField.text       = stores!.title
+    editLocationField.text    = stores!.selectCity
+    editTypeField.text        = stores!.selectType
+    editDescriptionField.text = stores!.offerDescription
+    oldType                   = stores!.selectType.lowercased()
     
     let imageView = UIImageView()
-    imageView.sd_setImage(with: URL(string: store.logo), placeholderImage: UIImage(named: ""))
+    imageView.sd_setImage(with: URL(string: stores.logo),
+                          placeholderImage: UIImage(named: ""))
     
     logoImage.image = imageView.image
     getImages()
-    
-    
   }
+  
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     getImages()
   }
   
+  
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
-    store = nil
-    arryPhoto.removeAll()
-    print("~~ I'm here")
+    stores = nil
+    imagesArray.removeAll()
   }
   
-  func getImages() {
-    self.arryPhoto.removeAll()
-    print("~~ \(store.images.count)")
-    if store.images.count >= 1 {
-    for images in store.images {
-      print("~~ \(store.images.count)")
-      let imageView = UIImageView()
-      imageView.sd_setImage(with: URL(string: images), placeholderImage: UIImage(named: "")) { image, error, _, _ in
-        self.arryPhoto.append(image!)
-        self.uploadedPicsCollection.reloadData()
-        print("~~ \(self.arryPhoto.count )")
-      }
-      
-    }
-    }
-  }
   
+  //MARK: - IBAction
+ 
   @IBAction func deletImagePressed(_ sender: UIButton) {
     let index = sender.tag
-    arryPhoto.remove(at: index)
-    uploadedPicsCollection.reloadData()
-  
+    imagesArray.remove(at: index)
+    uploadedImagesCV.reloadData()
   }
+  
+  
   @IBAction func uploadImages(_ sender: UIButton) {
-    //        let picker = UIImagePickerController()
-    //        picker.sourceType = .photoLibrary
-    //        picker.delegate = self
-    //        picker.allowsEditing = true
-    //        present(picker, animated: true)
     getPhotos()
   }
   
   
   @IBAction func uploadLogo(_ sender: UIButton) {
     showPhotoAlert()
-    
   }
   
   
   @IBAction func sendDataPressed(_ sender: UIButton) {
+    sendUpdatedDataToFireStore ()
+  }
+ 
+  
+  //MARK: - Methods
+  
+  func sendUpdatedDataToFireStore () {
     
-    self.view.isUserInteractionEnabled = false;
     self.navigationController?.navigationBar.isUserInteractionEnabled = false;
-    
-    
-    
-    
+   
     let db = Firestore.firestore()
     let auth = Auth.auth().currentUser
     let storage = Storage.storage()
-    
-    //        var documentID = ""
-    //        if documentID == "" {
-    //            documentID = UUID().uuidString
-    //        }
-    
     var imageID = UUID().uuidString
-    let imageFolderID = store!.id
+    let imageFolderID = stores!.id
     
     let uploadMetadata = StorageMetadata()
     uploadMetadata.contentType = "image/jpeg"
-    
-    let type = self.editTypeTextField.text?.lowercased()
+    let type = self.editTypeField.text?.lowercased()
     
     if oldType != type {
       let document = db.collection("sections").document(oldType)
-            
-       document.updateData([
-        self.store.id: FieldValue.delete()
-       ])
       
-
+      document.updateData([
+        self.stores.id: FieldValue.delete()
+      ])
     }
     
     let database = db.collection("sections").document(type!)
-//    let id = database.documentID
-    
-    
+   
     imageID = UUID().uuidString
     
-    
     database.setData(
-      ["\(imageFolderID)" : [
-        "title":self.editTitleTextField.text!,
-        "productName":self.editNameTextField.text!,
-        "price":self.editPriceTextField.text!,
-        "selectCity":self.editLocationTextField.text!,
-        "selectType":self.editTypeTextField.text!,
-        "productDescription":self.editDescriptionTextField.text!,
-        "images":[""],
-        "logo":""]
+      ["\(imageFolderID)"   : [
+        "title"             :self.editTitleField.text!,
+        "captainName"       :self.editNameField.text!,
+        "price"             :self.editPriceField.text!,
+        "selectCity"        :self.editLocationField.text!,
+        "selectType"        :self.editTypeField.text!,
+        "productDescription":self.editDescriptionField.text!,
+        "images"            :[""],
+        "logo"              :""]
       ],
       merge: true) { error in
         guard error == nil else {
@@ -223,15 +162,17 @@ class EditOwnerInfoVC: UIViewController,
         }
         
         self.progressBar.progress = 0.2
-        db.collection("stores")
-          .document(auth!.uid)
-          .collection("store")
-          .document(imageFolderID)
-          .setData(["id":imageFolderID, "type":type!,
-                   ]) {error in
+          db.collection("stores")
+            .document(auth!.uid)
+            .collection("store")
+            .document(imageFolderID)
+            .setData(["id":imageFolderID,
+                      "type":type!,
+                    ]) {error in
             guard error == nil else {
               return
             }
+              
             self.progressBar.progress = 0.4
             let logoImage = self.logoImage.image?.jpegData(compressionQuality: 0.5)
             let storageRf = storage.reference().child(auth!.uid).child(imageFolderID).child(imageID)
@@ -246,45 +187,45 @@ class EditOwnerInfoVC: UIViewController,
                 } else {
                   self.progressBar.progress = 0.6
                   db.collection("sections").document(type!).setData(["\(imageFolderID)" : [
-                    "logo":url?.absoluteString]],merge: true, completion: { error in
-                      guard error == nil else {
-                        print("~~ error: \(String(describing: error?.localizedDescription))")
+                 "logo":url?.absoluteString]],merge: true, completion: { error in
+                  guard error == nil else {
+                  print("~~ error: \(String(describing: error?.localizedDescription))")
                         return
                       }
-                      print("~~ Done")
-                      
+                  print("--- Done")
                     })
                   
                   var imageData = [Data]()
-                  for image in arryPhoto {
+                  
+                  for image in imagesArray {
                     let data = image.jpegData(compressionQuality: 0.5)
                     imageData.append(data!)
                   }
+                  
                   var imageURL = [String]()
                   for image in imageData {
                     imageID = UUID().uuidString
                     
                     let storageRf = storage.reference().child(auth!.uid).child(imageFolderID).child(imageID)
                     storageRf.putData(image, metadata: uploadMetadata) { metadata, error in
-                      guard error == nil else {
+                    guard error == nil else {
                         return
                       }
                       self.progressBar.progress = 0.8
                       storageRf.downloadURL { url, error in
                         if error != nil {
                         } else {
-                          imageURL.append(url!.absoluteString)
+                      imageURL.append(url!.absoluteString)
                           
-                          //                        database
+                          //Database
                           
                           db.collection("sections").document(type!).setData(["\(imageFolderID)" : [
-                            "productName":self.editNameTextField.text!,
-                            "price":self.editPriceTextField.text!,
-                            "selectCity":self.editLocationTextField.text!,
-                            "selectType":self.editTypeTextField.text!,
-                            "productDescription":self.editDescriptionTextField.text!,
-                            "images":imageURL,
-                            
+                            "captainName"       :self.editNameField.text!,
+                            "price"             :self.editPriceField.text!,
+                            "selectCity"        :self.editLocationField.text!,
+                            "selectType"        :self.editTypeField.text!,
+                            "productDescription":self.editDescriptionField.text!,
+                            "images"            :imageURL,
                             
                           ]],merge: true, completion: {
                             error in
@@ -297,96 +238,100 @@ class EditOwnerInfoVC: UIViewController,
                             self.navigationController?.navigationBar.isUserInteractionEnabled = true;
                             self.progressBar.progress = 1.0
                             self.navigationController?.popViewController(animated: true)
-                            
                           })
-                          
                         }
                       }
                     }
-                    
                   }
                 }
               }
             }
           }
       }
-    
-    
-
-    
-  }
-  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    view.endEditing(true)
   }
   
-  //    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-  //        picker.dismiss(animated: true, completion: nil)
-  //        guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
-  //            return
-  //        }
-  //        guard let imageData = image.pngData() else {
-  //            return
-  //        }
-  //    }
   
-  
-  //    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-  //        picker.dismiss(animated: true, completion: nil)
-  //    }
-  
-  
-  func numberOfComponents(in pickerView: UIPickerView) -> Int {
-    return 1
-  }
-  
-  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-    if (pickerView == cityPicker) {
-      return citiesArr.count
-    } else {
-      return typeArr.count
+  //MARK: - Upload Images
+ 
+  func getImages() {
+    self.imagesArray.removeAll()
+    if stores.images.count >= 1 {
+      for images in stores.images {
+        let imageView = UIImageView()
+        imageView.sd_setImage(with: URL(string: images),
+                              placeholderImage: UIImage(named: "")) { image, error, _, _ in
+          self.imagesArray.append(image!)
+          self.uploadedImagesCV.reloadData()
+        }
+      }
     }
   }
   
-  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-    if (pickerView == cityPicker) {
-      return citiesArr[row]
-    } else {
-      return typeArr[row]
-    }
+  
+  func getLogo(type: UIImagePickerController.SourceType){
+    let pickerCont = UIImagePickerController()
+    pickerCont.sourceType = type
+    pickerCont.allowsEditing = false
+    pickerCont.delegate = self
+    present(pickerCont, animated: true, completion: nil)
   }
   
-  func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-    currentIndex = row
-    if (pickerView == cityPicker){
-      editLocationTextField.text = citiesArr[row]
-    } else {
-      editTypeTextField.text = typeArr[row]
-    }
+  
+  //MARK: - Pickers
+ 
+  func cityPicking () {
+    
+    let toolBarCity = UIToolbar()
+    toolBarCity.barStyle = UIBarStyle.default
+    toolBarCity.isTranslucent = true
+    toolBarCity.sizeToFit()
+    
+    let cityDoneButon = UIBarButtonItem(title: "Done",
+                                        style: .plain,
+                                        target: self,
+                                        action: #selector(closeCityPicker))
+    toolBarCity.setItems([cityDoneButon], animated: true)
+    toolBarCity.isUserInteractionEnabled = true
+    
+    editLocationField.inputView = cityPicker
+    editLocationField.inputAccessoryView = toolBarCity
   }
+  
+  
+  func typePicking () {
+    
+    let toolBarType = UIToolbar()
+    toolBarType.barStyle = UIBarStyle.default
+    toolBarType.isTranslucent = true
+    toolBarType.sizeToFit()
+    
+    let typeDoneButon = UIBarButtonItem(title: "Done",
+                                        style: .plain,
+                                        target: self,
+                                        action: #selector(closeTypePicker))
+    toolBarType.setItems([typeDoneButon], animated: true)
+    toolBarType.isUserInteractionEnabled = true
+    editTypeField.inputView = typePicker
+    editTypeField.inputAccessoryView = toolBarType
+  }
+  
   
   @objc func closeCityPicker () {
-    editLocationTextField.text = citiesArr[currentIndex]
-    editLocationTextField.resignFirstResponder()
+    editLocationField.text = citiesList[currentIndex]
+    editLocationField.resignFirstResponder()
   }
   
   
   @objc func closeTypePicker () {
-    editTypeTextField.text = typeArr[currentIndex]
-    editTypeTextField.resignFirstResponder()
+    editTypeField.text = typeList[currentIndex]
+    editTypeField.resignFirstResponder()
   }
   
   
-  
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return arryPhoto.count
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    view.endEditing(true)
   }
   
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = uploadedPicsCollection.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! ImageEditingCVCell
-    cell.collectionImage.image = arryPhoto[indexPath.row]
-    
-    return cell
-  }
   
   func getPhotos(){
     var config = PHPickerConfiguration()
@@ -396,9 +341,93 @@ class EditOwnerInfoVC: UIViewController,
     let phPickre = PHPickerViewController(configuration: config)
     phPickre.delegate = self
     present(phPickre, animated: true, completion: nil)
-    
   }
   
+  
+  func showPhotoAlert(){
+    let alert = UIAlertController(title: "Take Photo From:", message: nil, preferredStyle: .actionSheet)
+    alert.addAction(UIAlertAction(title: "Camera",
+                                  style: .default,
+                                  handler: { action in
+      self.getLogo(type: .camera)
+    }))
+    alert.addAction(UIAlertAction(title: "Photo Library",
+                                  style: .default,
+                                  handler: { action in
+      self.getLogo(type: .photoLibrary)
+    }))
+    alert.addAction(UIAlertAction(title:
+                                    "Cancel",
+                                  style: .cancel,
+                                  handler: nil))
+    present(alert, animated: true, completion: nil)
+  }
+}
+
+
+//MARK: - UICollectionView
+ 
+extension EditOwnerInfoVC: UICollectionViewDelegate,
+                           UICollectionViewDataSource{
+  
+  
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return imagesArray.count
+  }
+  
+  
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = uploadedImagesCV.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! ImageEditingCVCell
+    cell.collectionImage.image = imagesArray[indexPath.row]
+    
+    return cell
+  }
+}
+
+
+//MARK: - Upload Image
+
+extension EditOwnerInfoVC:  UIPickerViewDelegate,
+                            UIPickerViewDataSource{
+  
+  func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    return 1
+  }
+  
+  
+  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    if (pickerView == cityPicker) {
+      return citiesList.count
+    } else {
+      return typeList.count
+    }
+  }
+  
+  
+  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    if (pickerView == cityPicker) {
+      return citiesList[row]
+    } else {
+      return typeList[row]
+    }
+  }
+  
+  
+  func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    currentIndex = row
+    if (pickerView == cityPicker){
+      editLocationField.text = citiesList[row]
+    } else {
+      editTypeField.text = typeList[row]
+    }
+  }
+}
+
+
+//MARK: - Upload Image
+
+extension EditOwnerInfoVC: PHPickerViewControllerDelegate,
+                           UIImagePickerControllerDelegate {
   
   func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
     dismiss(animated: true, completion: nil)
@@ -408,8 +437,8 @@ class EditOwnerInfoVC: UIViewController,
         (imagePic,error) in
         if let imagePice = imagePic as? UIImage {
           DispatchQueue.main.async{
-            self.arryPhoto.append(imagePice)
-            self.uploadedPicsCollection.reloadData()
+            self.imagesArray.append(imagePice)
+            self.uploadedImagesCV.reloadData()
           }
         } else {
           
@@ -418,33 +447,7 @@ class EditOwnerInfoVC: UIViewController,
       )
     }
   }
-  
-  func showPhotoAlert(){
-    let alert = UIAlertController(title: "Take Photo From:", message: nil, preferredStyle: .actionSheet)
-    alert.addAction(UIAlertAction(title: "Camera",
-                                  style: .default,
-                                  handler: { action in
-      self.getPhoto(type: .camera)
-    }))
-    alert.addAction(UIAlertAction(title: "Photo Library",
-                                  style: .default,
-                                  handler: { action in
-      self.getPhoto(type: .photoLibrary)
-    }))
-    alert.addAction(UIAlertAction(title:
-                                    "Cancel",
-                                  style: .cancel,
-                                  handler: nil))
-    present(alert, animated: true, completion: nil)
-  }
-  func getPhoto(type: UIImagePickerController.SourceType){
-    let pickerCont = UIImagePickerController()
-    pickerCont.sourceType = type
-    pickerCont.allowsEditing = false
-    pickerCont.delegate = self
-    present(pickerCont, animated: true, completion: nil)
-  }
-  
+
   
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
     dismiss(animated: true, completion: nil)
@@ -455,4 +458,3 @@ class EditOwnerInfoVC: UIViewController,
     logoImage.image = image
   }
 }
-
