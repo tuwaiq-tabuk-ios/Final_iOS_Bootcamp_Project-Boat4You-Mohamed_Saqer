@@ -27,3 +27,7 @@ Boat owners
 ## User stories - Clients
    - Create an account and login into the application
    - Search in a list of boats for concrete localizations for boats and choose one
+
+
+## Demo 
+![](ScreenRecord.gif)
