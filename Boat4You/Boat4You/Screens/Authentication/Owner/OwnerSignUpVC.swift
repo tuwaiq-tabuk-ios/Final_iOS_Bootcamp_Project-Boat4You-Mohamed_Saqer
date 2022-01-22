@@ -33,33 +33,33 @@ class OwnerSignUpVC: UIViewController {
     guard let email = emailField.text,
                 email.isEmpty == false else {
                   errorLabel.isHidden = false
-                  errorLabel.text = "You didn't write your email"
+                  errorLabel.text = "You didn't write your email".localize()
                   return
                 }
            
           guard let password = passwordField.text,
                 password.isEmpty == false else {
                   errorLabel.isHidden = false
-                  errorLabel.text = "You didn't write your password"
+                  errorLabel.text = "You didn't write your password".localize()
                   return
                 }
            guard let confirmPassword = confirmPasswordField.text,
                  confirmPassword.isEmpty == false else {
                    errorLabel.isHidden = false
-                   errorLabel.text = "Confirm your password"
+                   errorLabel.text = "Confirm your password".localize()
                    return
                  }
            guard let firstName = firstNameField.text,
                     firstName.isEmpty == false else {
                       errorLabel.isHidden = false
-                      errorLabel.text = "Write your first name"
+                      errorLabel.text = "Write your first name".localize()
                       return
                     }
                
               guard let lastName = lastNameField.text,
                     lastName.isEmpty == false else {
                       errorLabel.isHidden = false
-                      errorLabel.text = "Write your last name"
+                      errorLabel.text = "Write your last name".localize()
                       return
                     }
    
@@ -88,15 +88,13 @@ class OwnerSignUpVC: UIViewController {
                    }
                  }
   
-    } else {
+            } else {
             errorLabel.isHidden = false
-            errorLabel.text = "Passwords don't match"
+              errorLabel.text = "Passwords don't match".localize()
           }
        
-        }
+        }//signUpTapped
       
-  
-  
   
   @IBAction func alredyHaveAnAccountTapped(_ sender: UIButton) {
     
@@ -105,6 +103,7 @@ class OwnerSignUpVC: UIViewController {
     vc.modalPresentationStyle = .overFullScreen
     present(vc ,animated: true)
   }
+  
   
   //MARK: - Methods
   func signUp(email: String,

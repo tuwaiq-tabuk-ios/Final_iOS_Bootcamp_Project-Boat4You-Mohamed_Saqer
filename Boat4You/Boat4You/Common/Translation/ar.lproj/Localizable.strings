@@ -1,0 +1,65 @@
+/* 
+  Localizable.strings
+  Boat4You
+
+  Created by Mohammed on 19/06/1443 AH.
+  
+*/
+
+
+"You didn't write your email" = "ادخل بريدك الالكتروني";
+
+"You didn't write your password" = "ادخل كلمة مرورك";
+
+"Confirm your password" = "اكد كلمة مرورك";
+
+"Write your first name" = "اكتب اسمك الاول";
+
+"Write your last name" = "اكتب اسمك الاخير";
+
+"Please enter your email" = "فضلا ادخل بريدك الالكتروني";
+
+"Please enter your password" = "فضلا ادخل كلمة مرورك";
+
+"Succesfully" = "تم";
+
+"A password reset email has been sent!" = "تم إرسال رابط إعادة تعيين كلمة مرور لبريدك";
+
+"Duba" = "ضباء";
+
+"Umlaj" = "املج";
+
+"Alwajeh" = "الوجه";
+
+"Jeddah" = "جدة";
+
+"Craft" = "دباب بحري";
+
+"Boat" = "قارب";
+
+"Fill in the title field" = "الرجاء تعبئة حقل العنوان";
+
+"Fill in the price field" = "الرجاء تعبئة حقل السعر";
+
+"Fill in the captain field" = "الرجاء تعبئة حقل اسم الكابتن";
+
+"Fill in the type field" = "الرجاء تعبئة حقل النوع";
+
+"Fill in the city field" = "الرجاء تعبئة حقل المدينة";
+
+"Fill in the description field" = "الرجاء تعبئة حقل الوصف";
+
+"Take Photo From:" = "اختيار صورة";
+
+"Camera" = "الكاميرا";
+
+"Photo Library" = "مكتبة الصور";
+
+"Cancel" = "الغاء";
+
+"Done!" = "!تم";
+
+"Order created sucessfully." = "تم اضافة العرض بنجاح";
+
+"OK" = "حسنا";
+

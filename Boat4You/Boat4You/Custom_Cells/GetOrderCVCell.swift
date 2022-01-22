@@ -8,8 +8,7 @@
 import UIKit
 
 
-class RequestCVCell: UICollectionViewCell {
-    
+class GetOrderCVCell: UICollectionViewCell {
   @IBOutlet weak var titleLabel   : UILabel!
   @IBOutlet weak var dateLabel    : UILabel!
   @IBOutlet weak var deleteRequest: UIButton!

@@ -35,9 +35,9 @@ class ForgotPassVC: UIViewController {
         return
       }
       
-      let alert = UIAlertController(title: "Succesfully",
-                                      message: "A password reset email has been sent!",
-                                      preferredStyle: UIAlertController.Style.alert)
+      let alert = UIAlertController(title: "Succesfully".localize(),
+                                    message: "A password reset email has been sent!".localize(),
+                                    preferredStyle: UIAlertController.Style.alert)
       
       alert.addAction((UIAlertAction(  title: "Ok",
                                        style: .default,

@@ -36,10 +36,9 @@ class OffersCollectionVC: UIViewController,
        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReusableCell2", for: indexPath) as! StoreCVCell
        
-        cell.boatsImageView.sd_setImage(with: URL(string: array[indexPath.row].logo), placeholderImage: UIImage(named: "PlaceHolder"))
-        cell.nameLabel.text = array[indexPath.row].captainName
+        cell.storeOfferImage.sd_setImage(with: URL(string: array[indexPath.row].logo), placeholderImage: UIImage(named: "PlaceHolder"))
+        cell.titleLabel.text = array[indexPath.row].title
         cell.priceLabel.text = array[indexPath.row].price
-        
         return cell
     }
     

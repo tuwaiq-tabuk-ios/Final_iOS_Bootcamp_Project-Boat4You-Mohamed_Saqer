@@ -1,0 +1,354 @@
+
+/* Class = "UITabBarItem"; title = "Requests"; ObjectID = "0WY-kC-vYn"; */
+"0WY-kC-vYn.title" = "الطلبات";
+
+/* Class = "UILabel"; text = "Trouble logging in?"; ObjectID = "0tF-8X-KRT"; */
+"0tF-8X-KRT.text" = "هل تواجه مشاكل في تسجيل الدخول؟";
+
+/* Class = "UILabel"; text = "Dear client if you had any problem please contact us at m.s.aloqpi@gmail.com or you can click the button below"; ObjectID = "0uF-dX-dl1"; */
+"0uF-dX-dl1.text" = " m.s.aloqpi@gmail.com عزيزي العميل إذا واجهتك اي مشاكل تستطيع التواصل معنا على هذا الايميل";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "1Tu-PE-ZiJ"; */
+"1Tu-PE-ZiJ.text" = "العنوان";
+
+/* Class = "UILabel"; text = "Per hour"; ObjectID = "1hh-C7-Okl"; */
+"1hh-C7-Okl.text" = "في الساعة";
+
+/* Class = "UIButton"; normalTitle = "Don't have an account?"; ObjectID = "29M-NR-X3H"; */
+"29M-NR-X3H.normalTitle" = "لاتمتلك حساب؟";
+
+/* Class = "UIButton"; normalTitle = "SIGN IN"; ObjectID = "2dH-Ps-wQW"; */
+"2dH-Ps-wQW.normalTitle" = "تسجيل الدخول";
+
+/* Class = "UITabBarItem"; title = "Profile"; ObjectID = "3Cs-a2-S7Q"; */
+"3Cs-a2-S7Q.title" = "الملف الشخصي";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "3NY-QU-Moz"; */
+"3NY-QU-Moz.text" = "ليبل";
+
+/* Class = "UILabel"; text = "Boat4You"; ObjectID = "3mM-mW-bnS"; */
+"3mM-mW-bnS.text" = "Boat4You";
+
+/* Class = "UITabBarItem"; title = "Profile"; ObjectID = "3rX-yk-YLt"; */
+"3rX-yk-YLt.title" = "الملف الشخصي";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "4WT-bO-1aA"; */
+"4WT-bO-1aA.placeholder" = "البريد الالكتروني";
+
+/* Class = "UIButton"; normalTitle = "SEND"; ObjectID = "57H-qU-b1T"; */
+"57H-qU-b1T.normalTitle" = "ارسل";
+
+/* Class = "UILabel"; text = "Add logo"; ObjectID = "5b8-aA-ckB"; */
+"5b8-aA-ckB.text" = "اضف صورة للاعلان";
+
+/* Class = "UITextField"; placeholder = "Captain Name"; ObjectID = "5yg-RA-fZi"; */
+"5yg-RA-fZi.placeholder" = "اسم الكابتن";
+
+/* Class = "UIButton"; normalTitle = "Request"; ObjectID = "6t9-fv-82q"; */
+"6t9-fv-82q.normalTitle" = "طلبات";
+
+/* Class = "UITextField"; placeholder = "Price"; ObjectID = "6ts-oK-pib"; */
+"6ts-oK-pib.placeholder" = "السعر";
+
+/* Class = "UIButton"; normalTitle = "Select logo"; ObjectID = "7Ox-mj-ELe"; */
+"7Ox-mj-ELe.normalTitle" = "اختر صورة للاعلان";
+
+/* Class = "UITextField"; placeholder = "Kind of Product"; ObjectID = "9kh-UP-fPv"; */
+"9kh-UP-fPv.placeholder" = "النوع";
+
+/* Class = "UILabel"; text = "SIGN IN"; ObjectID = "A5Q-6f-Jxz"; */
+"A5Q-6f-Jxz.text" = "تسجيل الدخول";
+
+/* Class = "UITextField"; placeholder = "Email Address"; ObjectID = "ASN-cd-vsI"; */
+"ASN-cd-vsI.placeholder" = "البريد الالكتروني";
+
+/* Class = "UITextField"; placeholder = "Last Name"; ObjectID = "AgE-ck-8qa"; */
+"AgE-ck-8qa.placeholder" = "الاسم الاخير";
+
+/* Class = "UILabel"; text = "Craft"; ObjectID = "BOz-Lr-Ixf"; */
+"BOz-Lr-Ixf.text" = "دباب بحري";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "BQP-ar-Xhm"; */
+"BQP-ar-Xhm.placeholder" = "الرمز السري";
+
+/* Class = "UITextField"; placeholder = "Email Address"; ObjectID = "CVF-Ck-52U"; */
+"CVF-Ck-52U.placeholder" = "البريد الالكتروني";
+
+/* Class = "UIButton"; normalTitle = "Book"; ObjectID = "D08-Da-OHr"; */
+"D08-Da-OHr.normalTitle" = "احجز";
+
+/* Class = "UILabel"; text = "Sign Up"; ObjectID = "Dw0-6U-Tc4"; */
+"Dw0-6U-Tc4.text" = "التسجيل";
+
+/* Class = "UILabel"; text = "Price"; ObjectID = "EXJ-Js-dKH"; */
+"EXJ-Js-dKH.text" = "السعر";
+
+/* Class = "UILabel"; text = "Boat"; ObjectID = "EbO-fG-4fe"; */
+"EbO-fG-4fe.text" = "قارب";
+
+/* Class = "UITabBarItem"; title = "Control"; ObjectID = "FI7-hU-ukY"; */
+"FI7-hU-ukY.title" = "التحكم";
+
+/* Class = "UIButton"; normalTitle = "Update Info"; ObjectID = "Fsn-rq-7sh"; */
+"Fsn-rq-7sh.normalTitle" = "تحديث المعلومات";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "FzB-Oi-TAo"; */
+"FzB-Oi-TAo.placeholder" = "البريد الالكتروني";
+
+/* Class = "UIButton"; normalTitle = "SIGN IN"; ObjectID = "Gqd-l9-MTj"; */
+"Gqd-l9-MTj.normalTitle" = "تسجيل الدخول";
+
+/* Class = "UIButton"; normalTitle = "Select logo"; ObjectID = "H4c-yj-Qxw"; */
+"H4c-yj-Qxw.normalTitle" = "اختر صورة للاعلان";
+
+/* Class = "UITextField"; placeholder = "Description"; ObjectID = "JVZ-bt-fng"; */
+"JVZ-bt-fng.placeholder" = "الوصف";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "Jgr-fd-qkh"; */
+"Jgr-fd-qkh.text" = "العنوان";
+
+/* Class = "UILabel"; text = "Price"; ObjectID = "Jio-Rr-eP5"; */
+"Jio-Rr-eP5.text" = "السعر";
+
+/* Class = "UILabel"; text = "Phone Number:"; ObjectID = "KNs-NE-gJX"; */
+"KNs-NE-gJX.text" = "رقم الجوال";
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "KjB-XH-RKu"; */
+"KjB-XH-RKu.title" = "الصفحة الرئيسية";
+
+/* Class = "UILabel"; text = "Sign Up"; ObjectID = "Ko1-kt-wX3"; */
+"Ko1-kt-wX3.text" = "تسجيل";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "N02-kv-zcE"; */
+"N02-kv-zcE.placeholder" = "كلمة المرور";
+
+/* Class = "UILabel"; text = "Craft"; ObjectID = "N9N-LN-41d"; */
+"N9N-LN-41d.text" = "دباب بحري";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "NA4-wy-vST"; */
+"NA4-wy-vST.placeholder" = "البريد الالكتروني";
+
+/* Class = "UITextField"; placeholder = "First Name"; ObjectID = "Ntn-w9-kxP"; */
+"Ntn-w9-kxP.placeholder" = "الاسم الاول";
+
+/* Class = "UITextField"; placeholder = "Captain Name"; ObjectID = "OVQ-ji-9Az"; */
+"OVQ-ji-9Az.placeholder" = "اسم الكابتن";
+
+/* Class = "UITextField"; placeholder = "Phone Number "; ObjectID = "ObL-Km-0Ye"; */
+"ObL-Km-0Ye.placeholder" = "رقم الجوال";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "P5S-Xi-T7h"; */
+"P5S-Xi-T7h.text" = "ليبل";
+
+/* Class = "UILabel"; text = "Crafts or watercrafts are like motorcycle but on the water you can't imagne how fast are these crafts!"; ObjectID = "PWO-wk-rOL"; */
+"PWO-wk-rOL.text" = "الدبابات البحرية هي كالدراجات النارية لكن في البحر وهي سريعة جدا!";
+
+/* Class = "UITextField"; placeholder = "Last Name"; ObjectID = "QFN-V9-7BI"; */
+"QFN-V9-7BI.placeholder" = "الاسم الاخير";
+
+/* Class = "UILabel"; text = "Captain Name"; ObjectID = "QIG-2g-ch9"; */
+"QIG-2g-ch9.text" = "اسم الكابتن";
+
+/* Class = "UIButton"; normalTitle = "Select Photo"; ObjectID = "QWn-VA-hbr"; */
+"QWn-VA-hbr.normalTitle" = "اختر صورة";
+
+/* Class = "UINavigationItem"; title = "Home"; ObjectID = "Qjf-UV-2f6"; */
+"Qjf-UV-2f6.title" = "الصفحة الرئيسية";
+
+/* Class = "UITextField"; placeholder = "Confirm Password"; ObjectID = "Qkh-hu-Pi8"; */
+"Qkh-hu-Pi8.placeholder" = "تأكيد كلمة المرور";
+
+/* Class = "UILabel"; text = "Phone Number"; ObjectID = "RKr-Y4-wGM"; */
+"RKr-Y4-wGM.text" = "رقم الجوال";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "Rpc-Yn-j3R"; */
+"Rpc-Yn-j3R.placeholder" = "كلمة المرور";
+
+/* Class = "UIButton"; normalTitle = "Forgot your password?"; ObjectID = "SZO-uf-L1t"; */
+"SZO-uf-L1t.normalTitle" = "نسيت كلمة مرورك؟";
+
+/* Class = "UILabel"; text = "Made with love"; ObjectID = "Sak-WZ-uKf"; */
+"Sak-WZ-uKf.text" = "صنع بحب";
+
+/* Class = "UILabel"; text = "Description"; ObjectID = "Skg-EJ-CVE"; */
+"Skg-EJ-CVE.text" = "الوصف";
+
+/* Class = "UIViewController"; title = "Control"; ObjectID = "TSa-0N-7hJ"; */
+"TSa-0N-7hJ.title" = "التحكم";
+
+/* Class = "UIButton"; normalTitle = "Log Out"; ObjectID = "Tbi-Fi-04o"; */
+"Tbi-Fi-04o.normalTitle" = "تسجيل الخروج";
+
+/* Class = "UIButton"; normalTitle = "Info"; ObjectID = "VLH-bF-wxb"; */
+"VLH-bF-wxb.normalTitle" = "مزيد من المعلومات";
+
+/* Class = "UIButton"; normalTitle = "SEND"; ObjectID = "Ve3-sx-3gG"; */
+"Ve3-sx-3gG.normalTitle" = "إرسال";
+
+/* Class = "UILabel"; text = "Trouble logging in?"; ObjectID = "Vgg-C2-hUe"; */
+"Vgg-C2-hUe.text" = "هل تواجه مشاكل في تسجيل الدخول؟";
+
+/* Class = "UIButton"; normalTitle = "SIGN IN "; ObjectID = "XSZ-Up-Puy"; */
+"XSZ-Up-Puy.normalTitle" = "تسجيل الدخول ";
+
+/* Class = "UITextField"; placeholder = "Title"; ObjectID = "XXO-t1-Nw0"; */
+"XXO-t1-Nw0.placeholder" = "العنوان";
+
+/* Class = "UILabel"; text = "Location"; ObjectID = "YOb-RY-ds5"; */
+"YOb-RY-ds5.text" = "الموقع";
+
+/* Class = "UILabel"; text = "Date:"; ObjectID = "Ynu-uh-RPu"; */
+"Ynu-uh-RPu.text" = "التاريخ";
+
+/* Class = "UILabel"; text = "Type"; ObjectID = "YrV-Xj-TJb"; */
+"YrV-Xj-TJb.text" = "النوع";
+
+/* Class = "UIButton"; configuration.title = "Save"; ObjectID = "a1h-FT-dqY"; */
+"a1h-FT-dqY.configuration.title" = "حفظ";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "a1h-FT-dqY"; */
+"a1h-FT-dqY.normalTitle" = "حفظ";
+
+/* Class = "UIButton"; normalTitle = "Don't have an account?"; ObjectID = "a3T-d8-RUJ"; */
+"a3T-d8-RUJ.normalTitle" = "لاتمتلك حساب؟";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "aCc-51-gc8"; */
+"aCc-51-gc8.placeholder" = "البريد الالكتروني";
+
+/* Class = "UILabel"; text = "SIGN IN"; ObjectID = "aKn-cN-o1z"; */
+"aKn-cN-o1z.text" = "تسجيل الدخول";
+
+/* Class = "UILabel"; text = "Hi! You have an order"; ObjectID = "bQs-jZ-kuL"; */
+"bQs-jZ-kuL.text" = "مرحبا! لديك طلب جديد";
+
+/* Class = "UIButton"; normalTitle = "Alredy have an accont?"; ObjectID = "bR2-Ru-3iF"; */
+"bR2-Ru-3iF.normalTitle" = "لديك حساب؟";
+
+/* Class = "UILabel"; text = "Boat4You"; ObjectID = "bcY-rf-Yjv"; */
+"bcY-rf-Yjv.text" = "Boat4You";
+
+/* Class = "UITextField"; placeholder = "Your Location"; ObjectID = "bzh-Ht-E7b"; */
+"bzh-Ht-E7b.placeholder" = "موقعك";
+
+/* Class = "UITextField"; placeholder = "First Name"; ObjectID = "c2a-G3-taj"; */
+"c2a-G3-taj.placeholder" = "الاسم الاول";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "chD-T7-uxP"; */
+"chD-T7-uxP.placeholder" = "البريد الاكتروني";
+
+/* Class = "UIButton"; normalTitle = "Own a boat?"; ObjectID = "dLV-Na-m6j"; */
+"dLV-Na-m6j.normalTitle" = "تمتلك قارب؟";
+
+/* Class = "UITextField"; placeholder = "Confirm Password"; ObjectID = "fTV-yl-mPp"; */
+"fTV-yl-mPp.placeholder" = "تأكيد كلمة المرور";
+
+/* Class = "UIButton"; normalTitle = "Alredy have an accont?"; ObjectID = "fng-SN-mwD"; */
+"fng-SN-mwD.normalTitle" = "لديك حساب؟";
+
+/* Class = "UILabel"; text = "Captain Name"; ObjectID = "icL-po-PvC"; */
+"icL-po-PvC.text" = "اسم الكابتن";
+
+/* Class = "UILabel"; text = "Type"; ObjectID = "ipE-b1-jdg"; */
+"ipE-b1-jdg.text" = "النوع";
+
+/* Class = "UIButton"; normalTitle = "Forgot your password?"; ObjectID = "jMo-T3-gEX"; */
+"jMo-T3-gEX.normalTitle" = "فقدت كلمة المرور؟";
+
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "jlX-bF-Xdm"; */
+"jlX-bF-Xdm.normalTitle" = "رفع";
+
+/* Class = "UITextField"; placeholder = "Price"; ObjectID = "lAY-yx-ONG"; */
+"lAY-yx-ONG.placeholder" = "السعر";
+
+/* Class = "UITextField"; text = "$"; ObjectID = "lAY-yx-ONG"; */
+"lAY-yx-ONG.text" = "$";
+
+/* Class = "UIButton"; normalTitle = "Log Out"; ObjectID = "lBq-RY-UbT"; */
+"lBq-RY-UbT.normalTitle" = "تسجيل الخروج";
+
+/* Class = "UITextField"; placeholder = "Title"; ObjectID = "lHc-4A-upp"; */
+"lHc-4A-upp.placeholder" = "العنوان";
+
+/* Class = "UILabel"; text = "There is many types of boat , fishing sailing and a lot , now with Boat4You its the time to start your advanture ,If you want to go out with the family the boats are very nice"; ObjectID = "lTB-DS-Lx4"; */
+"lTB-DS-Lx4.text" = "هناك انواع كثيرة من القوارب مثل قوارب الصيد والنزهات والخ ، إذا اردت الخروج مع العائلة في رحلة هادئة فالقوارب هي خيار رائع ومناسب";
+
+/* Class = "UILabel"; text = "Date"; ObjectID = "mRU-c4-1V5"; */
+"mRU-c4-1V5.text" = "التاريخ";
+
+/* Class = "UITextField"; placeholder = "Last Name"; ObjectID = "n7C-VY-5e2"; */
+"n7C-VY-5e2.placeholder" = "الاسم الاخير";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "nFE-IR-fos"; */
+"nFE-IR-fos.text" = "ليبل";
+
+/* Class = "UILabel"; text = "Add images"; ObjectID = "o2O-dI-zYV"; */
+"o2O-dI-zYV.text" = "أضف صور";
+
+/* Class = "UITextField"; placeholder = "First Name"; ObjectID = "ola-p9-xPU"; */
+"ola-p9-xPU.placeholder" = "الاسم الاول";
+
+/* Class = "UILabel"; text = "Start your advanture"; ObjectID = "pcv-wQ-NE5"; */
+"pcv-wQ-NE5.text" = "رخي اعصابك واختار رحلة معنا";
+
+/* Class = "UILabel"; text = "Description"; ObjectID = "pjF-io-Bq4"; */
+"pjF-io-Bq4.text" = "الوصف";
+
+/* Class = "UILabel"; text = "Location"; ObjectID = "qEL-eh-dGp"; */
+"qEL-eh-dGp.text" = "الموقع";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "qqe-26-ig4"; */
+"qqe-26-ig4.placeholder" = "كلمة المرور";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "qrc-BG-sOi"; */
+"qrc-BG-sOi.normalTitle" = "تعديل";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "rO2-cO-eyA"; */
+"rO2-cO-eyA.text" = "ليبل";
+
+/* Class = "UITextField"; placeholder = "Your Location"; ObjectID = "rwh-Qe-lQs"; */
+"rwh-Qe-lQs.placeholder" = "موقعك";
+
+/* Class = "UITextField"; placeholder = "01/01/2022"; ObjectID = "shs-QG-KMJ"; */
+"shs-QG-KMJ.placeholder" = "01/01/2022";
+
+/* Class = "UITextField"; placeholder = "First Name"; ObjectID = "svX-XZ-yrV"; */
+"svX-XZ-yrV.placeholder" = "الاسم الاول";
+
+/* Class = "UITextField"; placeholder = "Last Name"; ObjectID = "sz5-mM-WSt"; */
+"sz5-mM-WSt.placeholder" = "الاسم الاخير";
+
+/* Class = "UIButton"; normalTitle = "Update"; ObjectID = "tFX-c4-db8"; */
+"tFX-c4-db8.normalTitle" = "تحديث";
+
+/* Class = "UIButton"; normalTitle = "Select Photo"; ObjectID = "u8U-pV-2WI"; */
+"u8U-pV-2WI.normalTitle" = "أختر صورة";
+
+/* Class = "UIButton"; normalTitle = "Update info"; ObjectID = "uR6-Kr-aDG"; */
+"uR6-Kr-aDG.normalTitle" = "تحديث المعلومات";
+
+/* Class = "UILabel"; text = "Price"; ObjectID = "v82-Ih-hSk"; */
+"v82-Ih-hSk.text" = "السعر";
+
+/* Class = "UILabel"; text = "Description"; ObjectID = "vRi-pt-leO"; */
+"vRi-pt-leO.text" = "الوصف";
+
+/* Class = "UITextField"; placeholder = "Kind of Product"; ObjectID = "vjk-xD-BgC"; */
+"vjk-xD-BgC.placeholder" = "النوع";
+
+/* Class = "UIButton"; normalTitle = "Sign Up"; ObjectID = "wNh-q4-Dl9"; */
+"wNh-q4-Dl9.normalTitle" = "تسجيل الدخول";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "wZR-7h-n4t"; */
+"wZR-7h-n4t.placeholder" = "البريد الاكتروني";
+
+/* Class = "UILabel"; text = "Maximum 5"; ObjectID = "x26-YO-rq7"; */
+"x26-YO-rq7.text" = "الحد الاقصى خمسة صور";
+
+/* Class = "UIButton"; normalTitle = "Sign Up"; ObjectID = "xKl-wb-jy8"; */
+"xKl-wb-jy8.normalTitle" = "تسجيل الدخول";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "yQC-n0-BBm"; */
+"yQC-n0-BBm.text" = "ليبل";
+
+/* Class = "UIButton"; normalTitle = "Update"; ObjectID = "zQG-rD-wO2"; */
+"zQG-rD-wO2.normalTitle" = "تحديث";

@@ -33,7 +33,7 @@ class SignUpVC: UIViewController {
     guard let email = emailField.text,
           email.isEmpty == false else {
             errorLabel.isHidden = false
-            errorLabel.text = "Fill in the email"
+            errorLabel.text = "Fill in the email".localize()
             return
           }
     

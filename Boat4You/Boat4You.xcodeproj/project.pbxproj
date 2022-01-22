@@ -16,6 +16,8 @@
 		1042C36C277C947600C9AAFD /* StoreImageCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1042C36B277C947600C9AAFD /* StoreImageCVCell.swift */; };
 		10492E3F2779CD97000F1D12 /* ForgotPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10492E3E2779CD96000F1D12 /* ForgotPassVC.swift */; };
 		10492E412779D8F1000F1D12 /* ClientProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10492E402779D8F1000F1D12 /* ClientProfileVC.swift */; };
+		104DEC43279B778200E2071C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 104DEC41279B775900E2071C /* Localizable.strings */; };
+		104DEC46279B79C000E2071C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 104DEC48279B79C000E2071C /* Main.storyboard */; };
 		104E13732774AAAD0061BE6E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 104E13722774AAAD0061BE6E /* FirebaseAuth */; };
 		104E13752774AAAD0061BE6E /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 104E13742774AAAD0061BE6E /* FirebaseDatabase */; };
 		104E13772774AAAD0061BE6E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 104E13762774AAAD0061BE6E /* FirebaseFirestore */; };
@@ -31,10 +33,9 @@
 		106696E5277B003E00B43A7C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 106696E4277B003E00B43A7C /* GoogleService-Info.plist */; };
 		106696EA277B306C00B43A7C /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 106696E9277B306C00B43A7C /* SDWebImage */; };
 		106696EC277B306C00B43A7C /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 106696EB277B306C00B43A7C /* SDWebImageMapKit */; };
-		106723E42782DE58007B271E /* RequestCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106723E32782DE58007B271E /* RequestCVCell.swift */; };
+		106723E42782DE58007B271E /* GetOrderCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106723E32782DE58007B271E /* GetOrderCVCell.swift */; };
 		106723E62782DE8D007B271E /* GetOffersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106723E52782DE8D007B271E /* GetOffersVC.swift */; };
 		106723E82782F074007B271E /* OwnerOrderCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106723E72782F074007B271E /* OwnerOrderCVCell.swift */; };
-		107D9EA9276B63D9007BF018 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 107D9EA8276B63D9007BF018 /* Main.storyboard */; };
 		107E80BD276A158B00811237 /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E80BC276A158B00811237 /* CollectionVC.swift */; };
 		1080531027706A2A006A4012 /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1080530F27706A2A006A4012 /* WelcomeVC.swift */; };
 		1080531C2770AEB4006A4012 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1080531B2770AEB4006A4012 /* Store.swift */; };
@@ -45,6 +46,8 @@
 		109BE4502794209B00EC0EB2 /* OwnerLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109BE44C2794209A00EC0EB2 /* OwnerLoginVC.swift */; };
 		109BE4512794209B00EC0EB2 /* OwnerSignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109BE44D2794209A00EC0EB2 /* OwnerSignUpVC.swift */; };
 		109BE4522794209B00EC0EB2 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109BE44E2794209A00EC0EB2 /* SignUpVC.swift */; };
+		109C5030279B1BA00009E673 /* MainTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109C502F279B1BA00009E673 /* MainTextField.swift */; };
+		109C5033279B34440009E673 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109C5032279B34440009E673 /* String+Ext.swift */; };
 		10C31FFE27858CBE0038FD0D /* UpdateOwnerInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C31FFD27858CBE0038FD0D /* UpdateOwnerInfoVC.swift */; };
 		10C320002785939F0038FD0D /* UpdateUserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C31FFF2785939F0038FD0D /* UpdateUserInfoVC.swift */; };
 		10C320022785B9190038FD0D /* ClientBookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C320012785B9190038FD0D /* ClientBookVC.swift */; };
@@ -65,6 +68,11 @@
 		1042C36B277C947600C9AAFD /* StoreImageCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreImageCVCell.swift; sourceTree = "<group>"; };
 		10492E3E2779CD96000F1D12 /* ForgotPassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassVC.swift; sourceTree = "<group>"; };
 		10492E402779D8F1000F1D12 /* ClientProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientProfileVC.swift; sourceTree = "<group>"; };
+		104DEC40279B775900E2071C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		104DEC42279B777600E2071C /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		104DEC47279B79C000E2071C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		104DEC4A279B79C300E2071C /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
+		104DEC4C279B79F500E2071C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		1062A292276F149900B9E46C /* StoreCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCVCell.swift; sourceTree = "<group>"; };
 		1062A294276F1A0A00B9E46C /* OffersCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersCollectionVC.swift; sourceTree = "<group>"; };
 		10669695276612D800A660AC /* Boat4You.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Boat4You.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,10 +84,9 @@
 		106696A6276612D900A660AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		106696E2277AEB7400B43A7C /* ImageCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCVCell.swift; sourceTree = "<group>"; };
 		106696E4277B003E00B43A7C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		106723E32782DE58007B271E /* RequestCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCVCell.swift; sourceTree = "<group>"; };
+		106723E32782DE58007B271E /* GetOrderCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOrderCVCell.swift; sourceTree = "<group>"; };
 		106723E52782DE8D007B271E /* GetOffersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOffersVC.swift; sourceTree = "<group>"; };
 		106723E72782F074007B271E /* OwnerOrderCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerOrderCVCell.swift; sourceTree = "<group>"; };
-		107D9EA8276B63D9007BF018 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		107E80BC276A158B00811237 /* CollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
 		1080530F27706A2A006A4012 /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
 		1080531B2770AEB4006A4012 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -90,6 +97,8 @@
 		109BE44C2794209A00EC0EB2 /* OwnerLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerLoginVC.swift; sourceTree = "<group>"; };
 		109BE44D2794209A00EC0EB2 /* OwnerSignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerSignUpVC.swift; sourceTree = "<group>"; };
 		109BE44E2794209A00EC0EB2 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		109C502F279B1BA00009E673 /* MainTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTextField.swift; sourceTree = "<group>"; };
+		109C5032279B34440009E673 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		10C31FFD27858CBE0038FD0D /* UpdateOwnerInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateOwnerInfoVC.swift; sourceTree = "<group>"; };
 		10C31FFF2785939F0038FD0D /* UpdateUserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserInfoVC.swift; sourceTree = "<group>"; };
 		10C320012785B9190038FD0D /* ClientBookVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientBookVC.swift; sourceTree = "<group>"; };
@@ -145,6 +154,8 @@
 		1028FB67279587EE00B4CEDE /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				109C5036279B34980009E673 /* Translation */,
+				109C5031279B2F9F0009E673 /* TextField */,
 				108053152770A937006A4012 /* Models */,
 				1028FB6A2795887900B4CEDE /* Extentions */,
 				1028FB682795882300B4CEDE /* Constants.swift */,
@@ -157,6 +168,7 @@
 			children = (
 				1028FB6B279588AA00B4CEDE /* UIViewController+Ext.swift */,
 				10DEBB5627990443003005ED /* UIView+Ext.swift */,
+				109C5032279B34440009E673 /* String+Ext.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -184,7 +196,7 @@
 		105A963A2786FA0600308B63 /* Custom_Cells */ = {
 			isa = PBXGroup;
 			children = (
-				106723E32782DE58007B271E /* RequestCVCell.swift */,
+				106723E32782DE58007B271E /* GetOrderCVCell.swift */,
 				10D41B7727971BF000B3E97A /* ImageEditingCVCell.swift */,
 				106696E2277AEB7400B43A7C /* ImageCVCell.swift */,
 				107E80BC276A158B00811237 /* CollectionVC.swift */,
@@ -291,8 +303,8 @@
 		108053172770A9AB006A4012 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				104DEC48279B79C000E2071C /* Main.storyboard */,
 				106696A3276612D900A660AC /* LaunchScreen.storyboard */,
-				107D9EA8276B63D9007BF018 /* Main.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -305,6 +317,22 @@
 				106696A1276612D900A660AC /* Assets.xcassets */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		109C5031279B2F9F0009E673 /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				109C502F279B1BA00009E673 /* MainTextField.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
+		109C5036279B34980009E673 /* Translation */ = {
+			isa = PBXGroup;
+			children = (
+				104DEC41279B775900E2071C /* Localizable.strings */,
+			);
+			path = Translation;
 			sourceTree = "<group>";
 		};
 		10D41B7927973E9300B3E97A /* Client */ = {
@@ -374,6 +402,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
 			);
 			mainGroup = 1066968C276612D800A660AC;
 			packageReferences = (
@@ -394,7 +423,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				107D9EA9276B63D9007BF018 /* Main.storyboard in Resources */,
+				104DEC43279B778200E2071C /* Localizable.strings in Resources */,
+				104DEC46279B79C000E2071C /* Main.storyboard in Resources */,
 				106696A5276612D900A660AC /* LaunchScreen.storyboard in Resources */,
 				106696A2276612D900A660AC /* Assets.xcassets in Resources */,
 				106696E5277B003E00B43A7C /* GoogleService-Info.plist in Resources */,
@@ -417,7 +447,7 @@
 				1066969D276612D800A660AC /* MainVC.swift in Sources */,
 				109BE44F2794209B00EC0EB2 /* LoginVC.swift in Sources */,
 				1080531027706A2A006A4012 /* WelcomeVC.swift in Sources */,
-				106723E42782DE58007B271E /* RequestCVCell.swift in Sources */,
+				106723E42782DE58007B271E /* GetOrderCVCell.swift in Sources */,
 				1006EBC0279877A9005953F2 /* Section.swift in Sources */,
 				1028FB662795874000B4CEDE /* FSCollectionRefernce.swift in Sources */,
 				1062A295276F1A0A00B9E46C /* OffersCollectionVC.swift in Sources */,
@@ -435,10 +465,12 @@
 				109BE4522794209B00EC0EB2 /* SignUpVC.swift in Sources */,
 				106723E82782F074007B271E /* OwnerOrderCVCell.swift in Sources */,
 				109BE4512794209B00EC0EB2 /* OwnerSignUpVC.swift in Sources */,
+				109C5030279B1BA00009E673 /* MainTextField.swift in Sources */,
 				10C320042785BCB80038FD0D /* Order.swift in Sources */,
 				1062A293276F149900B9E46C /* StoreCVCell.swift in Sources */,
 				10C320002785939F0038FD0D /* UpdateUserInfoVC.swift in Sources */,
 				109BE44627941DFB00EC0EB2 /* UploadOffersVC.swift in Sources */,
+				109C5033279B34440009E673 /* String+Ext.swift in Sources */,
 				10669699276612D800A660AC /* AppDelegate.swift in Sources */,
 				10DEBB5727990443003005ED /* UIView+Ext.swift in Sources */,
 				1042C36C277C947600C9AAFD /* StoreImageCVCell.swift in Sources */,
@@ -450,6 +482,26 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		104DEC41279B775900E2071C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				104DEC40279B775900E2071C /* en */,
+				104DEC42279B777600E2071C /* ar */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+			usesTabs = 0;
+		};
+		104DEC48279B79C000E2071C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				104DEC47279B79C000E2071C /* Base */,
+				104DEC4A279B79C300E2071C /* ar */,
+				104DEC4C279B79F500E2071C /* en */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		106696A3276612D900A660AC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -465,6 +517,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -526,6 +579,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

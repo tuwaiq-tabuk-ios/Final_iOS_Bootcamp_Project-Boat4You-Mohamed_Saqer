@@ -8,7 +8,6 @@
 import UIKit
 
 class ImageEditingCVCell: UICollectionViewCell {
-    
   @IBOutlet weak var collectionImage  : UIImageView!
   @IBOutlet weak var removeImageButton: UIButton!
 }

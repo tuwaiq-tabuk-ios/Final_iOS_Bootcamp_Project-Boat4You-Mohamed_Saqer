@@ -147,12 +147,12 @@ class EditOwnerInfoVC: UIViewController,
     
     database.setData(
       ["\(imageFolderID)"   : [
-        "title"             :self.editTitleField.text!,
-        "captainName"       :self.editNameField.text!,
-        "price"             :self.editPriceField.text!,
-        "selectCity"        :self.editLocationField.text!,
-        "selectType"        :self.editTypeField.text!,
-        "productDescription":self.editDescriptionField.text!,
+        "title"             :self.editTitleField.text ?? "NN" ,
+        "captainName"       :self.editNameField.text ?? "NN",
+        "price"             :self.editPriceField.text ?? "NN",
+        "selectCity"        :self.editLocationField.text ?? "NN",
+        "selectType"        :self.editTypeField.text ?? "NN",
+        "productDescription":self.editDescriptionField.text ?? "NN",
         "images"            :[""],
         "logo"              :""]
       ],
@@ -220,11 +220,11 @@ class EditOwnerInfoVC: UIViewController,
                           //Database
                           
                           db.collection("sections").document(type!).setData(["\(imageFolderID)" : [
-                            "captainName"       :self.editNameField.text!,
-                            "price"             :self.editPriceField.text!,
-                            "selectCity"        :self.editLocationField.text!,
-                            "selectType"        :self.editTypeField.text!,
-                            "productDescription":self.editDescriptionField.text!,
+                            "captainName"       :self.editNameField.text ?? "NN",
+                            "price"             :self.editPriceField.text ?? "NN",
+                            "selectCity"        :self.editLocationField.text ?? "NN",
+                            "selectType"        :self.editTypeField.text ?? "NN",
+                            "productDescription":self.editDescriptionField.text ?? "NN",
                             "images"            :imageURL,
                             
                           ]],merge: true, completion: {
@@ -260,8 +260,13 @@ class EditOwnerInfoVC: UIViewController,
         let imageView = UIImageView()
         imageView.sd_setImage(with: URL(string: images),
                               placeholderImage: UIImage(named: "")) { image, error, _, _ in
+          if error == nil {
           self.imagesArray.append(image!)
           self.uploadedImagesCV.reloadData()
+          }
+          
+           
+          
         }
       }
     }
