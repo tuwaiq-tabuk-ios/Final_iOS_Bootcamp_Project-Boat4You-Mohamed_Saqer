@@ -12,7 +12,7 @@ class WelcomeVC: UIViewController {
   @IBOutlet weak var onwerButton: UIButton!
   @IBOutlet weak var mainImage: UIImageView!
   @IBOutlet weak var userButton: UIButton!
-  let radius: CGFloat = 8
+  
  
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -23,8 +23,8 @@ class WelcomeVC: UIViewController {
     
     animatedLabel.animate(newText: animatedLabel.text ?? "", characterDelay: 0.5)
     
-    onwerButton.dropShadow(radius: radius, opacity: 0.8, color: .black)
-    userButton.dropShadow(radius: radius, opacity: 0.8, color: .black)
+    onwerButton.dropShadow(radius: 8, opacity: 0.8, color: .black)
+    userButton.dropShadow(radius: 8, opacity: 0.8, color: .black)
     hideKeyboardWhenTappedAround()
   }
 }

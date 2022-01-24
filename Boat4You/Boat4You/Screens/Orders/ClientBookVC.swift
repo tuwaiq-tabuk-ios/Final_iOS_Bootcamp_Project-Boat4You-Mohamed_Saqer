@@ -51,8 +51,8 @@ class ClientBookVC: UIViewController {
         print("Successfully Added!")
         DispatchQueue.main.async {
           
-          let alert = UIAlertController(title: "Done!",
-                                        message: "Order created sucessfully.",
+          let alert = UIAlertController(title: "Done!".localize(),
+                                        message: "Order created sucessfully.".localize(),
                                         preferredStyle: .alert)
           
           alert.addAction(UIAlertAction(title: "OK",

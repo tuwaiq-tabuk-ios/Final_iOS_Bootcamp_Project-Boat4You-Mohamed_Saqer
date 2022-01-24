@@ -14,11 +14,12 @@ class GetOffersVC: UIViewController,
                   UICollectionViewDataSource {
   
   // MARK: - IBOutlet
+  
   @IBOutlet weak var ordersCollectionView: UICollectionView!
   
   // MARK: -Properties
   let radius: CGFloat = 8
-  var request: RequestCVCell!
+  var request: GetOrderCVCell!
   var orders: [Order] = [Order]()
   
   // MARK: -View Controller Lifecycle
@@ -98,7 +99,7 @@ class GetOffersVC: UIViewController,
   
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RequestsCell", for: indexPath) as! RequestCVCell
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RequestsCell", for: indexPath) as! GetOrderCVCell
     
     cell.titleLabel.text = orders[indexPath.row].phoneNumner
     cell.dateLabel.text = orders[indexPath.row].dateUploaded

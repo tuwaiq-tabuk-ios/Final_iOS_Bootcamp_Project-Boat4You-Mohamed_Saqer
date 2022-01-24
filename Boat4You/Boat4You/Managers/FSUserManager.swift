@@ -14,22 +14,22 @@ import Firebase
     private init() {}
     
     var firstName = ""
-    var lastName = ""
+    var lastName  = ""
     
     
     // MARK: - Register
     
     func signUpUserWith(
-      email: String,
-      password: String,
+      email          : String,
+      password       : String,
       confirmPassword: String,
-      firstName: String,
-      lastName: String,
-      type:String,
-      completion: @escaping (_ error: Error?) -> Void
+      firstName      : String,
+      lastName       : String,
+      type           :String,
+      completion     : @escaping (_ error: Error?) -> Void
     ) {
       self.firstName = firstName
-      self.lastName = lastName
+      self.lastName  = lastName
       
       Auth
         .auth()
@@ -47,7 +47,7 @@ import Firebase
           getFSCollectionReference(.users)
             .document((user.uid)).setData([
               "firstName":firstName,
-              "lastName":lastName,
+              "lastName" :lastName,
               "type":type
             ]) { error in
               if error != nil {

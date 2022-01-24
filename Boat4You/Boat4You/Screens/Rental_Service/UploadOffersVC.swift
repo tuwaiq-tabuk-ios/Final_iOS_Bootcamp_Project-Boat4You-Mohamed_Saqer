@@ -26,7 +26,6 @@ class UploadOffersVC: UIViewController,
   @IBOutlet weak var uploadImagesCV: UICollectionView!
   @IBOutlet weak var titleField: UITextField!
   @IBOutlet weak var logoImage: UIImageView!
- 
   @IBOutlet weak var errorLabel: UILabel!
   
   
@@ -34,8 +33,8 @@ class UploadOffersVC: UIViewController,
   
   let cityPicker = UIPickerView()
   let typePicker = UIPickerView()
-  var citiesList = ["Duba","Umlaj","Alwajeh","Jeddah"]
-  var typeList = ["Craft","Boat"]
+  var citiesList = ["Duba".localize(),"Umlaj".localize(),"Alwajeh".localize(),"Jeddah".localize()]
+  var typeList = ["Craft".localize(),"Boat".localize()]
   var imagesArray = [UIImage]()
   var currentIndex = 0
   var toolBarCity = UIToolbar()
@@ -46,6 +45,8 @@ class UploadOffersVC: UIViewController,
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    errorLabel.isHidden = true
     
     cityPicker.delegate = self
     cityPicker.delegate = self
@@ -79,8 +80,54 @@ class UploadOffersVC: UIViewController,
   
   
   @IBAction func sendDataPressed(_ sender: UIButton) {
+    
+   
+    guard let title = titleField.text,
+          title.isEmpty == false else {
+            errorLabel.isHidden = false
+            errorLabel.text = "Fill in the title field".localize()
+            return
+          }
+    
+    guard let captainName = captainNameField.text,
+          captainName.isEmpty == false else {
+            errorLabel.isHidden = false
+            errorLabel.text = "Fill in the captain field".localize()
+            return
+          }
+    
+    guard let price = priceField.text,
+          price.isEmpty == false else {
+            errorLabel.isHidden = false
+            errorLabel.text = "Fill in the price field".localize()
+            return
+          }
+    
+    guard let type = selectCityField.text,
+          type.isEmpty == false else {
+            errorLabel.isHidden = false
+            errorLabel.text = "Fill in the type field".localize()
+            return
+          }
+    
+    guard let city = selectCityField.text,
+          city.isEmpty == false else {
+            errorLabel.isHidden = false
+            errorLabel.text = "Fill in the city field".localize()
+            return
+          }
+    
+    guard let description = OfferDescriptionField.text,
+          description.isEmpty == false else {
+            errorLabel.isHidden = false
+            errorLabel.text = "Fill in the description field".localize()
+            return
+          }
+    
+    
     uploadDataToFireStore()
-    showAlertMessage(title: "Successfully", message: "Data uploaded successfully")
+    showAlertMessage(title: "Successfully", message: "Data uploaded successfully".localize())
+            return
   }
   
   
@@ -148,13 +195,13 @@ class UploadOffersVC: UIViewController,
     
     database.setData(
       ["\(imageFolderID)" : [
-        "title":self.titleField.text!,
-        "captainName":self.captainNameField.text!,
-        "price":self.priceField.text!,
-        "selectCity":self.selectCityField.text!,
-        "selectType":self.selectTypeField.text!,
-        "productDescription":self.OfferDescriptionField.text!,
-        "images":[""],
+        "title"             :self.titleField.text            ?? "Nil",
+        "captainName"       :self.captainNameField.text      ?? "Nil",
+        "price"             :self.priceField.text            ?? "Nil",
+        "selectCity"        :self.selectCityField.text       ?? "Nil",
+        "selectType"        :self.selectTypeField.text       ?? "Nil",
+        "productDescription":self.OfferDescriptionField.text ?? "Nil",
+        "images":[""] ,
         "logo":""]
       ],
       merge: true) { error in
@@ -196,8 +243,6 @@ class UploadOffersVC: UIViewController,
                 return
               }
               print("~~ Done")
-              
-            
             })
           
           var imageData = [Data]()
@@ -225,12 +270,14 @@ class UploadOffersVC: UIViewController,
                   
                   //Database
               
-                  db.collection("sections").document(type!).setData(["\(imageFolderID)" : [
-                    "captainName":self.captainNameField.text!,
-                    "price":self.priceField.text!,
-                    "selectCity":self.selectCityField.text!,
-                    "selectType":self.selectTypeField.text!,
-                    "productDescription":self.OfferDescriptionField.text!,
+                  db.collection("sections")
+                    .document(type!)
+                    .setData(["\(imageFolderID)" : [
+                    "captainName"       :self.captainNameField.text      ?? "Nil" ,
+                    "price"             :self.priceField.text            ?? "Nil",
+                    "selectCity"        :self.selectCityField.text       ?? "Nil",
+                    "selectType"        :self.selectTypeField.text       ?? "Nil",
+                    "productDescription":self.OfferDescriptionField.text ?? "Nil",
                     "images":imageURL,
                     
                     
@@ -291,19 +338,19 @@ class UploadOffersVC: UIViewController,
   
   
   func showPhotoAlert(){
-    let alert = UIAlertController(title: "Take Photo From:", message: nil, preferredStyle: .actionSheet)
-    alert.addAction(UIAlertAction(title: "Camera",
+    let alert = UIAlertController(title: "Take Photo From:".localize(), message: nil, preferredStyle: .actionSheet)
+    alert.addAction(UIAlertAction(title: "Camera".localize(),
                                   style: .default,
                                   handler: { action in
       self.getLogo(type: .camera)
     }))
-    alert.addAction(UIAlertAction(title: "Photo Library",
+    alert.addAction(UIAlertAction(title: "Photo Library".localize(),
                                   style: .default,
                                   handler: { action in
       self.getLogo(type: .photoLibrary)
     }))
     alert.addAction(UIAlertAction(title:
-                                    "Cancel",
+                                    "Cancel".localize(),
                                   style: .cancel,
                                   handler: nil))
     present(alert, animated: true, completion: nil)
@@ -361,7 +408,6 @@ extension UploadOffersVC: UIImagePickerControllerDelegate,
             self.uploadImagesCV.reloadData()
           }
         } else {
-          
         }
       }
       )

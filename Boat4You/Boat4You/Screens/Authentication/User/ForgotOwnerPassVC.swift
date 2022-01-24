@@ -28,19 +28,28 @@ class ForgotOwnerPassVC: UIViewController {
   
     let auth = Auth.auth()
     auth.sendPasswordReset(withEmail: emailField.text!) { (error) in
-        if let error = error {
-            let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert)
-            self.present(alert, animated: true, completion: nil)
-            return
-        }
-        let alert = UIAlertController(title: "Succesfully", message: "A password reset email has been sent!", preferredStyle: UIAlertController.Style.alert)
-     
+      
+      if let error = error {
+        let alert = UIAlertController(title: "Error",
+                                      message: error.localizedDescription,
+                                      preferredStyle: UIAlertController.Style.alert)
+        self.present(alert,
+                     animated: true,
+                     completion: nil)
+        
+        return
+      }
+      
+      let alert = UIAlertController(title: "Succesfully".localize(),
+                                    message: "A password reset email has been sent!".localize(),
+                                    preferredStyle: UIAlertController.Style.alert)
       
       alert.addAction((UIAlertAction(  title: "Ok",
                                        style: .default,
                                        handler: nil)))
-      
-      self.present(alert, animated: true, completion: nil)
+      self.present(alert,
+                   animated: true,
+                   completion: nil)
     }
   }
 }

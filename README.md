@@ -18,12 +18,16 @@ Tourists and people in general who like to sail
 Boat owners
 
 
-## User stories - Boat owners
+## User stories - Boat/Craft owners
    - Create an account and login into the application
-   - Create and update a profile with the name of the business or the boat owner and his/her address.
-   - Create and update information about their boats.
+   - Create and update a profile with the name of the business or the boat owner.
+   - Create update and deleten information about their boats.
 
 
 ## User stories - Clients
    - Create an account and login into the application
    - Search in a list of boats for concrete localizations for boats and choose one
+
+
+## Demo 
+![](ScreenRecord.gif)

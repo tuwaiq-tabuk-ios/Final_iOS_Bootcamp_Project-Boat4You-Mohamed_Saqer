@@ -7,11 +7,12 @@
 
 import UIKit
 
+
 extension UIView {
-    
-  
-  
+
     func dropShadow(scale: Bool = true, radius: CGFloat, opacity: Float, color: UIColor) {
+        
+      let radius: CGFloat = 8
         layer.masksToBounds = false
         layer.shadowColor = color.cgColor
         layer.shadowOpacity = opacity

@@ -8,7 +8,7 @@
 import UIKit
 
 class StoreCVCell: UICollectionViewCell {
-    @IBOutlet weak var boatsImageView: UIImageView!
-    @IBOutlet weak var nameLabel     : UILabel!
+    @IBOutlet weak var storeOfferImage: UIImageView!
+    @IBOutlet weak var titleLabel     : UILabel!
     @IBOutlet weak var priceLabel    : UILabel!
 }

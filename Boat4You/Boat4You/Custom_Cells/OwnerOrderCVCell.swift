@@ -8,7 +8,6 @@
 import UIKit
 
 class OwnerOrderCVCell: UICollectionViewCell {
- 
   @IBOutlet weak var orderImage  : UIImageView!
   @IBOutlet weak var orderTitle  : UILabel!
   @IBOutlet weak var orderPrice  : UILabel!

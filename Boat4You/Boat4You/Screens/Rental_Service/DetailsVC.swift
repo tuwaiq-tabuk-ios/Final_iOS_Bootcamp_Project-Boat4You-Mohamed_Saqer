@@ -12,6 +12,7 @@ class DetailsVC: UIViewController,
                  UICollectionViewDataSource {
   
   // MARK: - IBoutlet
+ 
   @IBOutlet weak var bookingButtonOutlet  : UIButton!
   @IBOutlet weak var detailsView          : UIView!
   @IBOutlet weak var descriptionLabel     : UILabel!
